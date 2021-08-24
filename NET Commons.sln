@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk\n
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk.Tests", "nop77svkTests\nop77svk.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tdv_rest_api", "tdv_rest_api\tdv_rest_api.csproj", "{0B9D853F-A068-4C25-A64E-611A414F6A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-tdv-api", "tdv_rest_api\nop77svk-tdv-api.csproj", "{0B9D853F-A068-4C25-A64E-611A414F6A45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
