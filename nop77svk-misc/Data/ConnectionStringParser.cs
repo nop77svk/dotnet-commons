@@ -11,7 +11,6 @@
         }
 
         public string UserServerDelimiter { get; }
-
         public ConnectionStringParserPartPriority ParsePriority { get; }
 
         public string? ConnectionString
@@ -24,7 +23,6 @@
         }
 
         public virtual string? User { get; set; }
-
         public virtual string? Server { get; set; }
 
         private void ParseConnectionString(string? value)
