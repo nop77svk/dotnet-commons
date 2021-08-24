@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\http_rest_api\nop77svk-http-api.csproj" />
+    <ProjectReference Include="..\http_rest_api\nop77svk-ws.csproj" />
     <ProjectReference Include="..\nop77svk\nop77svk-misc.csproj" />
   </ItemGroup>
 
