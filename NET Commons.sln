@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "analyzer-settings", "analyzer-settings\analyzer-settings.csproj", "{B25C13D5-F21A-4558-808B-CB3267EBB23E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-ws", "http_rest_api\nop77svk-ws.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-ws", "nop77svk-ws\nop77svk-ws.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk\nop77svk-misc.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk-misc\nop77svk-misc.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc.tests", "nop77svkTests\nop77svk-misc.tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc.tests", "nop77svk-misc.tests\nop77svk-misc.tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-tibcodv-api", "tdv_rest_api\nop77svk-tibcodv-api.csproj", "{0B9D853F-A068-4C25-A64E-611A414F6A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-tibcodv-api", "nop77svk-tibcodv-api\nop77svk-tibcodv-api.csproj", "{0B9D853F-A068-4C25-A64E-611A414F6A45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
