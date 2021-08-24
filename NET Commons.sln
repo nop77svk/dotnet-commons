@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "analyzer-settings", "anlyze
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-http-api", "http_rest_api\nop77svk-http-api.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk", "nop77svk\nop77svk.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk\nop77svk-misc.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk.Tests", "nop77svkTests\nop77svk.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject

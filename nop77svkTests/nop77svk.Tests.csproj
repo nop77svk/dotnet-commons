@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\nop77svk\nop77svk.csproj" />
+    <ProjectReference Include="..\nop77svk\nop77svk-misc.csproj" />
   </ItemGroup>
 
 </Project>
