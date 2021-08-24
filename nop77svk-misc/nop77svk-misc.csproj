@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\eg_dv_commons\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
 
   <ItemGroup>

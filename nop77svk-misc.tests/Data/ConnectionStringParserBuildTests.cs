@@ -2,7 +2,7 @@
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    [TestClass()]
+    [TestClass]
     public class ConnectionStringParserBuildTests
     {
         private ConnectionStringParser _parser;
