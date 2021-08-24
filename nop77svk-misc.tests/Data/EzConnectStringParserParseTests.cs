@@ -2,12 +2,12 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using NoP77svk.Data;
+    using NoP77svk.Data.Utils;
 
     [TestClass]
     public class EzConnectStringParserParseTests
     {
-        private EzConnectStringParser _parser;
+        private readonly EzConnectStringParser _parser;
 
         public EzConnectStringParserParseTests() => _parser = new EzConnectStringParser();
 
