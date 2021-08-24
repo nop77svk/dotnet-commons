@@ -12,7 +12,7 @@
 [assembly: SuppressMessage("Style", "SA1011")] // Closing square bracket should be followed by a space
 [assembly: SuppressMessage("Style", "SA1101")] // Prefix local calls with this
 [assembly: SuppressMessage("Style", "SA1111")] // Closing parenthesis should be on line of last parameter
-[assembly: SuppressMessage("Style", "SA1122")] // Use string.Empty
+[assembly: SuppressMessage("Style", "SA1122")] // Use string.Empty // 2do!
 [assembly: SuppressMessage("Style", "SA1309")] // Field should not begin with an underscore
 [assembly: SuppressMessage("Style", "SA1413")] // Use trailing comma in multi-line initializers
 [assembly: SuppressMessage("Style", "SA1503")] // Braces should not be ommitted
