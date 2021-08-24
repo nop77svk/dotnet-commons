@@ -16,6 +16,7 @@
 
         [XmlAttribute("privs")]
         public string? Privs { get; init; }
+
         // public string? combinedPrivs { get; set; }
         // public string? inheritedPrivs { get; set; }
     }

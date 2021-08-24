@@ -55,6 +55,7 @@
                     string? displayPartToAdd = remapTheChar(key.KeyChar);
                     if (!string.IsNullOrWhiteSpace(displayPartToAdd))
                         Console.Error.Write(displayPartToAdd);
+
                     resultRemapped.Push(displayPartToAdd);
                 }
             }

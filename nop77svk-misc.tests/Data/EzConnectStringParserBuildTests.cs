@@ -3,75 +3,75 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using NoP77svk.Data;
 
-    [TestClass()]
+    [TestClass]
     public class EzConnectStringParserBuildTests
     {
-        private EzConnectStringParser _parser;
+        private readonly EzConnectStringParser _parser;
 
         public EzConnectStringParserBuildTests()
         {
             _parser = new EzConnectStringParser();
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TestDefaultUserServerDelimiter()
         {
             Assert.AreEqual("@", _parser.UserServerDelimiter);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TestDefaultParsePriority()
         {
             Assert.AreEqual(ConnectionStringParserPartPriority.Server, _parser.ParsePriority);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TestDefaultNamePasswordDelimiter()
         {
             Assert.AreEqual("/", _parser.NamePasswordDelimiter);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TestDefaultHostPortDelimiter()
         {
             Assert.AreEqual(":", _parser.HostPortDelimiter);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TestDefaultHostPathDelimiter()
         {
             Assert.AreEqual("/", _parser.HostPathDelimiter);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void NullUserIsNullUser()
         {
             _parser.User = null;
             Assert.IsNull(_parser.User);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void EmptyServerIsEmptyServer()
         {
             _parser.Server = string.Empty;
             Assert.AreEqual(string.Empty, _parser.Server);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void EmptyUserIsEmptyUser()
         {
             _parser.User = string.Empty;
             Assert.AreEqual(string.Empty, _parser.User);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void NullServerIsNullServer()
         {
             _parser.Server = null;
             Assert.IsNull(_parser.Server);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ConnectionStringWithBothNullsIsNull()
         {
             _parser.User = null;
@@ -79,7 +79,7 @@
             Assert.IsNull(_parser.ConnectionString);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ConnectionStringWithNullServerIsUserName()
         {
             _parser.User = "a_user";
@@ -87,7 +87,7 @@
             Assert.AreEqual("a_user", _parser.ConnectionString);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ConnectionStringWithEmptyServerIsUserName()
         {
             _parser.User = "a_user";
@@ -95,7 +95,7 @@
             Assert.AreEqual("a_user@", _parser.ConnectionString);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ConnectionStringWithNullUserIsServerName()
         {
             _parser.User = null;
@@ -103,7 +103,7 @@
             Assert.IsNull(_parser.ConnectionString);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ConnectionStringWithEmptyUserIsAtServerName()
         {
             _parser.User = string.Empty;
@@ -111,7 +111,7 @@
             Assert.AreEqual("@a_server", _parser.ConnectionString);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ConnectionStringWithBothEmptyIsEmpty()
         {
             _parser.User = string.Empty;

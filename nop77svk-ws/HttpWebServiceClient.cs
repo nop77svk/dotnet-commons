@@ -20,7 +20,9 @@
         }
 
         public string ServerHost { get; init; }
+
         public int? ServerPort { get; init; }
+
         public string? ServerScheme { get; init; }
 
         public static async Task<T> DeserializeJsonResponse<T>(Stream? json)
