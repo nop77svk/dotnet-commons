@@ -81,7 +81,7 @@
             Expression<Func<TInnerRow, TKey>> innerKeySelector,
             Expression<Func<TOuterRow, TInnerRow, TResult>> resultSelector)
         {
-            var sampleAnonLR = new { left = default(TOuterRow), rightg = default(IEnumerable<TInnerRow>) };
+            var sampleAnonLR = new { left = default(TOuterRow), right = default(IEnumerable<TInnerRow>) };
             var parmP = Expression.Parameter(sampleAnonLR.GetType(), "p");
             var parmC = Expression.Parameter(typeof(TInnerRow), "c");
             var argLeft = Expression.PropertyOrField(parmP, "left");
@@ -89,8 +89,8 @@
 
             return outerTable
                 .AsQueryable()
-                .GroupJoin(innerTable, outerKeySelector, innerKeySelector, (left, rightg) => new { left, rightg })
-                .SelectMany(r => r.rightg.DefaultIfEmpty(), newleftrs);
+                .GroupJoin(innerTable, outerKeySelector, innerKeySelector, (left, right) => new { left, right })
+                .SelectMany(r => r.right.DefaultIfEmpty(), newleftrs);
         }
 
         public static IQueryable<TResult> RightOuterJoin<TInnerRow, TOuterRow, TKey, TResult>(
