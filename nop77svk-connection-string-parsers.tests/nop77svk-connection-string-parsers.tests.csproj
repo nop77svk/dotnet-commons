@@ -4,10 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Nullable>enable</Nullable>
+
+    <RootNamespace>NoP77svk.Data.Utils.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
   </ItemGroup>
 
   <ItemGroup>

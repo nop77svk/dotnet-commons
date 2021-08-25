@@ -2,10 +2,20 @@
 {
     using System;
 
-    public class ConnectionStringParser
+    public class ConnectionStringParser<TUserParser, TServerParser>
+        where TUserParser : ISubstringParser
+        where TServerParser : ISubstringParser
     {
-        public ConnectionStringParser(string userServerDelimiter = "@", ConnectionStringParserPartPriority parsePriority = ConnectionStringParserPartPriority.Server)
+        public ConnectionStringParser(
+            TUserParser userParser,
+            TServerParser serverParser,
+            string userServerDelimiter = "@",
+            ConnectionStringParserPartPriority parsePriority = ConnectionStringParserPartPriority.Server
+        )
         {
+            UserParser = userParser;
+            ServerParser = serverParser;
+
             UserServerDelimiter = userServerDelimiter;
             ParsePriority = parsePriority;
         }
@@ -13,19 +23,37 @@
         public string UserServerDelimiter { get; }
         public ConnectionStringParserPartPriority ParsePriority { get; }
 
+        public TUserParser UserParser { get; }
+        public TServerParser ServerParser { get; }
+
         public string? ConnectionString
         {
-            get => BuildConnectionString();
+            get => Build();
             set
             {
-                ParseConnectionString(value);
+                Parse(value);
             }
         }
 
-        public virtual string? User { get; set; }
-        public virtual string? Server { get; set; }
+        public string? User
+        {
+            get => UserParser.Build();
+            set
+            {
+                UserParser.Parse(value);
+            }
+        }
 
-        private void ParseConnectionString(string? value)
+        public string? Server
+        {
+            get => ServerParser.Build();
+            set
+            {
+                ServerParser.Parse(value);
+            }
+        }
+
+        private void Parse(string? value)
         {
             if (value is null)
             {
@@ -60,16 +88,19 @@
             }
         }
 
-        private string? BuildConnectionString()
+        private string? Build()
         {
-            if (User is null)
+            string? leftSide = User;
+            string? rightSide = Server;
+
+            if (leftSide is null)
                 return null;
-            else if (Server is null)
-                return User;
-            else if (User == string.Empty && Server == string.Empty)
+            else if (rightSide is null)
+                return leftSide;
+            else if (leftSide == string.Empty && rightSide == string.Empty)
                 return string.Empty;
             else
-                return User + UserServerDelimiter + Server;
+                return leftSide + UserServerDelimiter + rightSide;
         }
     }
 }

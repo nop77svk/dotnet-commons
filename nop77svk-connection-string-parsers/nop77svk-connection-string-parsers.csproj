@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <RootNamespace>nop77svk_connection_string_parsers</RootNamespace>
+    <RootNamespace>NoP77svk.Data.Utils</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
