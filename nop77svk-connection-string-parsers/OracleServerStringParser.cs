@@ -3,7 +3,7 @@
     using System.Text;
 
     public class OracleServerStringParser
-        : HostPortServerParser, ISubstringParser
+        : HostPortServerStringParser, ISubstringParser
     {
         public OracleServerStringParser(string hostPortDelimiter = ":", string serviceOrSidDelimiter = "/")
             : base(hostPortDelimiter)
