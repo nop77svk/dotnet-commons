@@ -9,12 +9,174 @@
         private readonly OracleCredentialsParser _parser = new OracleCredentialsParser();
 
         [TestMethod]
-        public void ParseNullIsAllNulls()
+        public void NullParsesSchemaNullProxyNullPasswordNull()
         {
             _parser.Parse(null);
-            Assert.IsNull(_parser.SchemaUser);
-            Assert.IsNull(_parser.ProxyUser);
-            Assert.IsNull(_parser.Password);
+            Assert.AreEqual(null, _parser.SchemaUser);
+            Assert.AreEqual(null, _parser.ProxyUser);
+            Assert.AreEqual(null, _parser.Password);
+        }
+
+        [TestMethod]
+        public void EmptyParsesSchemaEmptyProxyNullPasswordNull()
+        {
+            _parser.Parse(string.Empty);
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual(null, _parser.ProxyUser);
+            Assert.AreEqual(null, _parser.Password);
+        }
+
+        [TestMethod]
+        public void SlashParsesSchemaEmptyProxyNullPasswordEmpty()
+        {
+            _parser.Parse("/");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual(null, _parser.ProxyUser);
+            Assert.AreEqual(string.Empty, _parser.Password);
+        }
+
+        [TestMethod]
+        public void SlashPasswordParsesSchemaEmptyProxyNullPasswordFilled()
+        {
+            _parser.Parse("/a_password");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual(null, _parser.ProxyUser);
+            Assert.AreEqual("a_password", _parser.Password);
+        }
+
+        [TestMethod]
+        public void BracketsParsesSchemaEmptyProxyEmptyPasswordNull()
+        {
+            _parser.Parse("[]");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual(string.Empty, _parser.ProxyUser);
+            Assert.AreEqual(null, _parser.Password);
+        }
+
+        [TestMethod]
+        public void BracketsAndSlashParsesSchemaEmptyProxyEmptyPasswordEmpty()
+        {
+            _parser.Parse("[]/");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual(string.Empty, _parser.ProxyUser);
+            Assert.AreEqual(string.Empty, _parser.Password);
+        }
+
+        [TestMethod]
+        public void BracketsAndPasswordParsesSchemaEmptyProxyEmptyPasswordFilled()
+        {
+            _parser.Parse("[]/a_password");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual(string.Empty, _parser.ProxyUser);
+            Assert.AreEqual("a_password", _parser.Password);
+        }
+
+        [TestMethod]
+        public void ProxyAndBracketsParsesSchemaEmptyProxyFilledPasswordNull()
+        {
+            _parser.Parse("a_proxy[]");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual("a_proxy", _parser.ProxyUser);
+            Assert.AreEqual(null, _parser.Password);
+        }
+
+        [TestMethod]
+        public void ProxyBracketsAndSlashParsesSchemaEmptyProxyFilledPasswordEmpty()
+        {
+            _parser.Parse("a_proxy[]/");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual("a_proxy", _parser.ProxyUser);
+            Assert.AreEqual(string.Empty, _parser.Password);
+        }
+
+        [TestMethod]
+        public void ProxyBracketsAndPasswordParsesSchemaEmptyProxyFilledPasswordFilled()
+        {
+            _parser.Parse("a_proxy[]/a_password");
+            Assert.AreEqual(string.Empty, _parser.SchemaUser);
+            Assert.AreEqual("a_proxy", _parser.ProxyUser);
+            Assert.AreEqual("a_password", _parser.Password);
+        }
+
+        [TestMethod]
+        public void UserParsesSchemaFilledProxyNullPasswordNull()
+        {
+            _parser.Parse("a_user");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual(null, _parser.ProxyUser);
+            Assert.AreEqual(null, _parser.Password);
+        }
+
+        [TestMethod]
+        public void UserAndSlashParsesSchemaFilledProxyNullPasswordEmpty()
+        {
+            _parser.Parse("a_user/");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual(null, _parser.ProxyUser);
+            Assert.AreEqual(string.Empty, _parser.Password);
+        }
+
+        [TestMethod]
+        public void UserAndPasswordParsesSchemaFilledProxyNullPasswordFilled()
+        {
+            _parser.Parse("a_user/a_password");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual(null, _parser.ProxyUser);
+            Assert.AreEqual("a_password", _parser.Password);
+        }
+
+        [TestMethod]
+        public void BracketedUserParsesSchemaFilledProxyEmptyPasswordNull()
+        {
+            _parser.Parse("[a_user]");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual(string.Empty, _parser.ProxyUser);
+            Assert.AreEqual(null, _parser.Password);
+        }
+
+        [TestMethod]
+        public void BracketedUserAndSlashParsesSchemaFilledProxyEmptyPasswordEmpty()
+        {
+            _parser.Parse("[a_user]/");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual(string.Empty, _parser.ProxyUser);
+            Assert.AreEqual(string.Empty, _parser.Password);
+        }
+
+        [TestMethod]
+        public void BracketedUserAndPasswordParsesSchemaFilledProxyEmptyPasswordFilled()
+        {
+            _parser.Parse("[a_user]/a_password");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual(string.Empty, _parser.ProxyUser);
+            Assert.AreEqual("a_password", _parser.Password);
+        }
+
+        [TestMethod]
+        public void ProxiedUserParsesSchemaFilledProxyFilledPasswordNull()
+        {
+            _parser.Parse("a_proxy[a_user]");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual("a_proxy", _parser.ProxyUser);
+            Assert.AreEqual(null, _parser.Password);
+        }
+
+        [TestMethod]
+        public void ProxiedUserAndSlashParsesSchemaFilledProxyFilledPasswordEmpty()
+        {
+            _parser.Parse("a_proxy[a_user]/");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual("a_proxy", _parser.ProxyUser);
+            Assert.AreEqual(string.Empty, _parser.Password);
+        }
+
+        [TestMethod]
+        public void OkParsesSchemaFilledProxyFilledPasswordFilled()
+        {
+            _parser.Parse("a_proxy[a_user]/a_password");
+            Assert.AreEqual("a_user", _parser.SchemaUser);
+            Assert.AreEqual("a_proxy", _parser.ProxyUser);
+            Assert.AreEqual("a_password", _parser.Password);
         }
     }
 }
