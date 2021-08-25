@@ -6,9 +6,9 @@
     [TestClass]
     public class OracleEzConnectStringParserBuildTests
     {
-        private readonly ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser> _parser
-            = new ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser>(
-                new GenericCredentialsParser(),
+        private readonly ConnectionStringParser<OracleCredentialsParser, OracleServerStringParser> _parser
+            = new ConnectionStringParser<OracleCredentialsParser, OracleServerStringParser>(
+                new OracleCredentialsParser(),
                 new OracleServerStringParser()
             );
 
