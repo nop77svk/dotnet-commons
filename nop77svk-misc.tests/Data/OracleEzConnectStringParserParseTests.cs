@@ -5,7 +5,7 @@
     using NoP77svk.Data.Utils;
 
     [TestClass]
-    public class EzConnectStringParserParseTests
+    public class OracleEzConnectStringParserParseTests
     {
         private readonly ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser> _parser
             = new ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser>(
