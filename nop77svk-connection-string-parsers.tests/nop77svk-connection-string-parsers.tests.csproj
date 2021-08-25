@@ -6,6 +6,8 @@
     <IsPackable>false</IsPackable>
 
     <Nullable>enable</Nullable>
+
+    <RootNamespace>NoP77svk.Data.Utils.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

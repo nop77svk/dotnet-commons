@@ -204,10 +204,12 @@
         [TestMethod]
         public void ParseWithEmptyUserName()
         {
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
-            {
-                _parser.ConnectionString = "/a_password@a_server:1234/a_service";
-            });
+            _parser.ConnectionString = "/a_password@a_server:1234/a_service";
+            Assert.AreEqual(string.Empty, _parser.UserParser.Name);
+            Assert.AreEqual("a_password", _parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.AreEqual("1234", _parser.ServerParser.Port);
+            Assert.AreEqual("a_service", _parser.ServerParser.ServiceOrSid);
         }
     }
 }

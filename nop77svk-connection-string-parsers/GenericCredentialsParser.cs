@@ -1,8 +1,6 @@
 ﻿namespace NoP77svk.Data.Utils
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public class GenericCredentialsParser
         : ISubstringParser
@@ -15,9 +13,9 @@
         public string NamePasswordDelimiter { get; } = "/";
 
         public virtual string? Name { get; set; }
-        public string? Password { get; set; }
+        public virtual string? Password { get; set; }
 
-        string? ISubstringParser.Build()
+        public virtual string? Build()
         {
             if (Name is null)
                 return null;
@@ -27,7 +25,7 @@
                 return (Name ?? string.Empty) + NamePasswordDelimiter + Password;
         }
 
-        void ISubstringParser.Parse(string? value)
+        public virtual void Parse(string? value)
         {
             if (value is null)
                 (Name, Password) = (null, null);
@@ -52,10 +50,6 @@
                 {
                     returnName = value;
                     returnPassword = null;
-                }
-                else if (namePasswordDelimiterIx == 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Parsing empty username with non-empty password? What are you trying to achieve?");
                 }
                 else
                 {
