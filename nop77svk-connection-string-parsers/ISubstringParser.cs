@@ -2,8 +2,8 @@
 {
     public interface ISubstringParser
     {
-        internal void Parse(string? value);
+        public void Parse(string? value);
 
-        internal string? Build();
+        public string? Build();
     }
 }
