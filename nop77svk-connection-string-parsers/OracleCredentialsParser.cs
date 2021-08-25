@@ -13,8 +13,8 @@
         {
         }
 
-        public string? SchemaUser { get; set; }
-        public string? ProxyUser { get; set; }
+        public virtual string? SchemaUser { get; set; }
+        public virtual string? ProxyUser { get; set; }
 
         public override string? Name
         {
@@ -35,13 +35,13 @@
             else
             {
                 int leftBracketIx = value.LastIndexOf(OpeningProxyEncloser);
-                if (leftBracketIx > 0)
+                if (leftBracketIx >= 0)
                 {
                     if (!value.EndsWith(ClosingProxyEncloser))
                         throw new ArgumentOutOfRangeException(nameof(value), value, "Unmatched opening bracket of proxy user name");
 
-                    ProxyUser = value.Substring(0, leftBracketIx - 1);
-                    SchemaUser = value[(leftBracketIx + 1)..^-1];
+                    ProxyUser = value.Substring(0, leftBracketIx);
+                    SchemaUser = value[(leftBracketIx + 1)..^1];
                 }
                 else
                 {
