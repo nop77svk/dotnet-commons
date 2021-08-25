@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Data.Tests
+﻿namespace NoP77svk.Data.Utils.Tests
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
