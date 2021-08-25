@@ -1,17 +1,13 @@
 ﻿namespace NoP77svk.Data.Utils.Tests
 {
+    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using NoP77svk.Data.Utils;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    [TestClass()]
+    [TestClass]
     public class GenericCredentialsParserTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void GenericCredentialsParser()
         {
             Assert.Fail();
