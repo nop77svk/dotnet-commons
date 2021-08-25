@@ -1,23 +1,18 @@
 ﻿namespace NoP77svk.Data.Utils
 {
-    using System;
-    using System.Collections.Generic;
     using System.Text;
 
     public class OracleServerStringParser
-        : ISubstringParser
+        : HostPortServerParser, ISubstringParser
     {
         public OracleServerStringParser(string hostPortDelimiter = ":", string serviceOrSidDelimiter = "/")
+            : base(hostPortDelimiter)
         {
-            HostPortDelimiter = hostPortDelimiter;
             ServiceOrSidDelimiter = serviceOrSidDelimiter;
         }
 
-        public string HostPortDelimiter { get; } = ":";
         public string ServiceOrSidDelimiter { get; } = "/";
 
-        public string? Host { get; set; }
-        public string? Port { get; set; }
         public string? ServiceOrSid { get; set; }
         public string? TnsSpecOrAlias { get; set; }
 
@@ -89,38 +84,6 @@
                     (Host, Port) = SplitByPortDelimiter(value.Substring(0, hostPathDelimiterIx));
                 }
             }
-        }
-
-        protected ValueTuple<string?, string?> SplitByPortDelimiter(string? value)
-        {
-            string? returnHost;
-            string? returnPort;
-
-            if (value is null)
-            {
-                returnHost = null;
-                returnPort = null;
-            }
-            else
-            {
-                int hostPortDelimiterIx = value.IndexOf(HostPortDelimiter);
-                if (hostPortDelimiterIx < 0)
-                {
-                    returnHost = value;
-                    returnPort = null;
-                }
-                else if (hostPortDelimiterIx == 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Parsing empty server host with non-empty port? What are you trying to achieve?");
-                }
-                else
-                {
-                    returnHost = value.Substring(0, hostPortDelimiterIx);
-                    returnPort = value.Substring(hostPortDelimiterIx + HostPortDelimiter.Length);
-                }
-            }
-
-            return new ValueTuple<string?, string?>(returnHost, returnPort);
         }
     }
 }
