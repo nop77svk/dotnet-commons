@@ -14,7 +14,7 @@
 
         public string NamePasswordDelimiter { get; } = "/";
 
-        public string? Name { get; set; }
+        public virtual string? Name { get; set; }
         public string? Password { get; set; }
 
         string? ISubstringParser.Build()
@@ -30,17 +30,28 @@
         void ISubstringParser.Parse(string? value)
         {
             if (value is null)
+                (Name, Password) = (null, null);
+            else
+                (Name, Password) = SplitByPasswordDelimiter(value);
+        }
+
+        protected ValueTuple<string?, string?> SplitByPasswordDelimiter(string? value)
+        {
+            string? returnName;
+            string? returnPassword;
+
+            if (value is null)
             {
-                Name = null;
-                Password = null;
+                returnName = null;
+                returnPassword = null;
             }
             else
             {
                 int namePasswordDelimiterIx = value.IndexOf(NamePasswordDelimiter);
                 if (namePasswordDelimiterIx < 0)
                 {
-                    Name = value;
-                    Password = null;
+                    returnName = value;
+                    returnPassword = null;
                 }
                 else if (namePasswordDelimiterIx == 0)
                 {
@@ -48,10 +59,12 @@
                 }
                 else
                 {
-                    Name = value.Substring(0, namePasswordDelimiterIx);
-                    Password = value.Substring(namePasswordDelimiterIx + NamePasswordDelimiter.Length);
+                    returnName = value.Substring(0, namePasswordDelimiterIx);
+                    returnPassword = value.Substring(namePasswordDelimiterIx + NamePasswordDelimiter.Length);
                 }
             }
+
+            return new ValueTuple<string?, string?>(returnName, returnPassword);
         }
     }
 }
