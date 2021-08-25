@@ -7,9 +7,11 @@
     [TestClass]
     public class EzConnectStringParserParseTests
     {
-        private readonly EzConnectStringParser _parser;
-
-        public EzConnectStringParserParseTests() => _parser = new EzConnectStringParser();
+        private readonly ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser> _parser
+            = new ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser>(
+                new GenericCredentialsParser(),
+                new OracleServerStringParser()
+            );
 
         [TestMethod]
         public void TestDefaultUserServerDelimiter()
@@ -40,7 +42,11 @@
         [TestMethod]
         public void ParseEmptyIsEmptyUser()
         {
-            EzConnectStringParser localParser = new EzConnectStringParser(parsePriority: ConnectionStringParserPartPriority.User)
+            var localParser = new ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser>(
+                new GenericCredentialsParser(),
+                new OracleServerStringParser(),
+                parsePriority: ConnectionStringParserPartPriority.User
+            )
             {
                 ConnectionString = string.Empty
             };
@@ -51,7 +57,11 @@
         [TestMethod]
         public void ParseEmptyIsEmptyServer()
         {
-            EzConnectStringParser localParser = new EzConnectStringParser(parsePriority: ConnectionStringParserPartPriority.Server)
+            var localParser = new ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser>(
+                new GenericCredentialsParser(),
+                new OracleServerStringParser(),
+                parsePriority: ConnectionStringParserPartPriority.Server
+            )
             {
                 ConnectionString = string.Empty
             };
@@ -70,7 +80,11 @@
         [TestMethod]
         public void ParseSingleValueOnlyIsUserWhenOverridden()
         {
-            EzConnectStringParser localParser = new EzConnectStringParser(parsePriority: ConnectionStringParserPartPriority.User)
+            var localParser = new ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser>(
+                new GenericCredentialsParser(),
+                new OracleServerStringParser(),
+                parsePriority: ConnectionStringParserPartPriority.User
+            )
             {
                 ConnectionString = "someone"
             };
@@ -81,7 +95,11 @@
         [TestMethod]
         public void ParseSingleValueOnlyIsServerWhenOverridden()
         {
-            EzConnectStringParser localParser = new EzConnectStringParser(parsePriority: ConnectionStringParserPartPriority.Server)
+            var localParser = new ConnectionStringParser<GenericCredentialsParser, OracleServerStringParser>(
+                new GenericCredentialsParser(),
+                new OracleServerStringParser(),
+                parsePriority: ConnectionStringParserPartPriority.Server
+            )
             {
                 ConnectionString = "something"
             };
@@ -100,56 +118,56 @@
         [TestMethod]
         public void FullStringParsesOK()
         {
-            _parser.ConnectionString = "a_user/a_password@a_server:1234/folder1/folder2/folder3";
-            Assert.AreEqual("a_user", _parser.UserName);
-            Assert.AreEqual("a_password", _parser.UserPassword);
-            Assert.AreEqual("a_server", _parser.ServerHost);
-            Assert.AreEqual("1234", _parser.ServerPort);
-            Assert.AreEqual("folder1/folder2/folder3", _parser.ServerPath);
+            _parser.ConnectionString = "a_user/a_password@a_server:1234/a_service";
+            Assert.AreEqual("a_user", _parser.UserParser.Name);
+            Assert.AreEqual("a_password", _parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.AreEqual("1234", _parser.ServerParser.Port);
+            Assert.AreEqual("a_service", _parser.ServerParser.ServiceOrSid);
         }
 
         [TestMethod]
         public void ParseWithEmptyServerPath()
         {
             _parser.ConnectionString = "a_user/a_password@a_server:1234/";
-            Assert.AreEqual("a_user", _parser.UserName);
-            Assert.AreEqual("a_password", _parser.UserPassword);
-            Assert.AreEqual("a_server", _parser.ServerHost);
-            Assert.AreEqual("1234", _parser.ServerPort);
-            Assert.AreEqual(string.Empty, _parser.ServerPath);
+            Assert.AreEqual("a_user", _parser.UserParser.Name);
+            Assert.AreEqual("a_password", _parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.AreEqual("1234", _parser.ServerParser.Port);
+            Assert.AreEqual(string.Empty, _parser.ServerParser.ServiceOrSid);
         }
 
         [TestMethod]
         public void ParseWithNoServerPath()
         {
             _parser.ConnectionString = "a_user/a_password@a_server:1234";
-            Assert.AreEqual("a_user", _parser.UserName);
-            Assert.AreEqual("a_password", _parser.UserPassword);
-            Assert.AreEqual("a_server", _parser.ServerHost);
-            Assert.AreEqual("1234", _parser.ServerPort);
-            Assert.IsNull(_parser.ServerPath);
+            Assert.AreEqual("a_user", _parser.UserParser.Name);
+            Assert.AreEqual("a_password", _parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.AreEqual("1234", _parser.ServerParser.Port);
+            Assert.IsNull(_parser.ServerParser.ServiceOrSid);
         }
 
         [TestMethod]
         public void ParseWithEmptyServerPort()
         {
-            _parser.ConnectionString = "a_user/a_password@a_server:/folder1/folder2/folder3";
-            Assert.AreEqual("a_user", _parser.UserName);
-            Assert.AreEqual("a_password", _parser.UserPassword);
-            Assert.AreEqual("a_server", _parser.ServerHost);
-            Assert.AreEqual(string.Empty, _parser.ServerPort);
-            Assert.AreEqual("folder1/folder2/folder3", _parser.ServerPath);
+            _parser.ConnectionString = "a_user/a_password@a_server:/a_service";
+            Assert.AreEqual("a_user", _parser.UserParser.Name);
+            Assert.AreEqual("a_password", _parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.AreEqual(string.Empty, _parser.ServerParser.Port);
+            Assert.AreEqual("a_service", _parser.ServerParser.ServiceOrSid);
         }
 
         [TestMethod]
         public void ParseWithNullServerPort()
         {
-            _parser.ConnectionString = "a_user/a_password@a_server/folder1/folder2/folder3";
-            Assert.AreEqual("a_user", _parser.UserName);
-            Assert.AreEqual("a_password", _parser.UserPassword);
-            Assert.AreEqual("a_server", _parser.ServerHost);
-            Assert.IsNull(_parser.ServerPort);
-            Assert.AreEqual("folder1/folder2/folder3", _parser.ServerPath);
+            _parser.ConnectionString = "a_user/a_password@a_server/a_service";
+            Assert.AreEqual("a_user", _parser.UserParser.Name);
+            Assert.AreEqual("a_password", _parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.IsNull(_parser.ServerParser.Port);
+            Assert.AreEqual("a_service", _parser.ServerParser.ServiceOrSid);
         }
 
         [TestMethod]
@@ -157,30 +175,30 @@
         {
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                _parser.ConnectionString = "a_user/a_password@:1234/folder1/folder2/folder3";
+                _parser.ConnectionString = "a_user/a_password@:1234/a_service";
             });
         }
 
         [TestMethod]
         public void ParseWithEmptyPassword()
         {
-            _parser.ConnectionString = "a_user/@a_server:1234/folder1/folder2/folder3";
-            Assert.AreEqual("a_user", _parser.UserName);
-            Assert.AreEqual(string.Empty, _parser.UserPassword);
-            Assert.AreEqual("a_server", _parser.ServerHost);
-            Assert.AreEqual("1234", _parser.ServerPort);
-            Assert.AreEqual("folder1/folder2/folder3", _parser.ServerPath);
+            _parser.ConnectionString = "a_user/@a_server:1234/a_service";
+            Assert.AreEqual("a_user", _parser.UserParser.Name);
+            Assert.AreEqual(string.Empty, _parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.AreEqual("1234", _parser.ServerParser.Port);
+            Assert.AreEqual("a_service", _parser.ServerParser.ServiceOrSid);
         }
 
         [TestMethod]
         public void ParseWithNullPassword()
         {
-            _parser.ConnectionString = "a_user@a_server:1234/folder1/folder2/folder3";
-            Assert.AreEqual("a_user", _parser.UserName);
-            Assert.IsNull(_parser.UserPassword);
-            Assert.AreEqual("a_server", _parser.ServerHost);
-            Assert.AreEqual("1234", _parser.ServerPort);
-            Assert.AreEqual("folder1/folder2/folder3", _parser.ServerPath);
+            _parser.ConnectionString = "a_user@a_server:1234/a_service";
+            Assert.AreEqual("a_user", _parser.UserParser.Name);
+            Assert.IsNull(_parser.UserParser.Password);
+            Assert.AreEqual("a_server", _parser.ServerParser.Host);
+            Assert.AreEqual("1234", _parser.ServerParser.Port);
+            Assert.AreEqual("a_service", _parser.ServerParser.ServiceOrSid);
         }
 
         [TestMethod]
@@ -188,7 +206,7 @@
         {
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                _parser.ConnectionString = "/a_password@a_server:1234/folder1/folder2/folder3";
+                _parser.ConnectionString = "/a_password@a_server:1234/a_service";
             });
         }
     }
