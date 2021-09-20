@@ -3,10 +3,13 @@
 [assembly: SuppressMessage("Style", "SA1404")] // Code analysis suppression should have a justification
 [assembly: SuppressMessage("Style", "AD0001")] // Exception within StyleCop.Analyzers
 
+[assembly: SuppressMessage("Style", "IDE0017")] // Object properties initialization can be simplified
 [assembly: SuppressMessage("Style", "IDE0057")] // Substring can be simplified
 [assembly: SuppressMessage("Style", "IDE0060")] // Remove unused parameter // 2do!
+[assembly: SuppressMessage("Style", "IDE0063")] // Use simple 'using' statement
 [assembly: SuppressMessage("Style", "IDE0090")] // Use new (...)
 
+[assembly: SuppressMessage("Usage", "CA1816")] // Dispose methods should call SuppressFinalize
 [assembly: SuppressMessage("Style", "CA2208")] // Wrong paramName to Argument...Exception
 
 [assembly: SuppressMessage("Style", "SA1009")] // Closing parenthesis should not be preceded by a space
@@ -14,7 +17,7 @@
 [assembly: SuppressMessage("Style", "SA1021")] // Negative signe should be preceded by a space
 [assembly: SuppressMessage("Style", "SA1101")] // Prefix local calls with this
 [assembly: SuppressMessage("Style", "SA1111")] // Closing parenthesis should be on line of last parameter
-// [assembly: SuppressMessage("Style", "SA1118")] // parameter spans multiple lines // 2do!
+[assembly: SuppressMessage("Style", "SA1118")] // parameter spans multiple lines // 2do!
 [assembly: SuppressMessage("Style", "SA1122")] // Use string.Empty // 2do!
 [assembly: SuppressMessage("Style", "SA1201")] // Enum should not follow a class
 [assembly: SuppressMessage("Style", "SA1300")] // Element ... should begin with an uppercase letter
