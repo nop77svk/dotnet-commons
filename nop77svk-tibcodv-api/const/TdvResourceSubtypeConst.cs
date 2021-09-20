@@ -1,6 +1,6 @@
 ﻿namespace NoP77svk.API.TibcoDV
 {
-    public class TdvResourceSubtype
+    public class TdvResourceSubtypeConst
     {
         public const string None = "NONE";
 

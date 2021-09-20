@@ -1,6 +1,6 @@
 ﻿namespace NoP77svk.API.TibcoDV
 {
-    public class TdvResourceType
+    public class TdvResourceTypeConst
     {
         public const string Container = "CONTAINER";
         public const string DataSource = "DATA_SOURCE";

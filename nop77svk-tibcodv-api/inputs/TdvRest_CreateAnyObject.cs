@@ -1,6 +1,6 @@
 ﻿namespace NoP77svk.API.TibcoDV
 {
-    public abstract record CreateAnyObjectPOCO
+    public abstract record TdvRest_CreateAnyObject
     {
         public string ParentPath { get; init; } = "/";
         public string? Name { get; init; }

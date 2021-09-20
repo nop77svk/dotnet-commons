@@ -2,7 +2,7 @@
 {
     using System.Text.Json.Serialization;
 
-    public record CreateLinkPOCO
+    public record TdvRest_CreateLink
     {
         [JsonPropertyName("path")]
         public string? PublishedLinkPath { get; init; }

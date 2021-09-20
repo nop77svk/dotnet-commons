@@ -123,14 +123,6 @@
                 if (_content is null)
                     throw new ArgumentNullException(nameof(_content), "Serializing NULL content");
 
-                SoapEnvelopePOCO<TContentType> soapedContent = new SoapEnvelopePOCO<TContentType>()
-                {
-                    Body = new SoapEnvelopeBodyPOCO<TContentType>()
-                    {
-                        Content = _content
-                    }
-                };
-
                 using MemoryStream xmlBuffer = new ();
                 using XmlWriter writer = XmlWriter.Create(xmlBuffer, new XmlWriterSettings()
                 {
@@ -143,8 +135,16 @@
                     WriteEndDocumentOnClose = true
                 });
 
-                XmlSerializer serializer = new XmlSerializer(typeof(SoapEnvelopePOCO<TContentType>));
-                serializer.Serialize(writer, soapedContent);
+                writer.WriteStartDocument(true);
+                writer.WriteStartElement("soap-env", "Envelope", SoapEnvelope_Constants.NamespaceUri);
+                writer.WriteStartElement("soap-env", "Body", SoapEnvelope_Constants.NamespaceUri);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(TContentType));
+                serializer.Serialize(writer, _content);
+
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
                 writer.Flush();
                 writer.Close();
 

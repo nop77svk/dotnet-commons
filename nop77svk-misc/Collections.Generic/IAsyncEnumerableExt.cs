@@ -14,5 +14,10 @@
 
             return result;
         }
+
+        public static async Task<TElement[]> ToArray<TElement>(this IAsyncEnumerable<TElement> self)
+        {
+            return (await self.ToList()).ToArray();
+        }
     }
 }

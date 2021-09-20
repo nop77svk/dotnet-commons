@@ -1,6 +1,6 @@
 ﻿namespace NoP77svk.API.TibcoDV
 {
-    public record DeleteLinkPOCO
+    public record TdvRest_DeleteLink
     {
         public string? Path { get; init; }
 

@@ -2,7 +2,7 @@
 {
     using System.Text.Json.Serialization;
 
-    public record ContainerContentsOutPOCO
+    public record TdvRest_ContainerContents
     {
         public string? Name { get; set; }
         public string? Path { get; set; }
@@ -13,6 +13,6 @@
         public object? ImpactMessage { get; set; }
         public int? ChildCount { get; set; }
 
-        public TdvResourceTypeEnum TdvResourceType => TdvWebServiceClient.DetermineResourceType(this);
+        public TdvResourceTypeEnum TdvResourceType => TdvWebServiceClient.CalcResourceType(this);
     }
 }
