@@ -21,4 +21,7 @@
     <NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
+  </ItemGroup>
 </Project>
