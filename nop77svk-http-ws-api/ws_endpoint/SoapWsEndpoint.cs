@@ -31,7 +31,7 @@
 
         public HttpMethod HttpMethod { get => HttpMethod.Post; }
 
-        public SoapWsEndpoint<TContentType> AddResourceFolder(string? resourceFolder)
+        public virtual SoapWsEndpoint<TContentType> AddResourceFolder(string? resourceFolder)
         {
             if (string.IsNullOrWhiteSpace(resourceFolder))
                 throw new ArgumentOutOfRangeException(nameof(resourceFolder), "Empty resourceFolder to be added");
@@ -139,7 +139,20 @@
                 writer.WriteStartElement("soap-env", "Envelope", SoapEnvelope_Constants.NamespaceUri);
                 writer.WriteStartElement("soap-env", "Body", SoapEnvelope_Constants.NamespaceUri);
 
-                XmlSerializer serializer = new XmlSerializer(typeof(TContentType));
+                string? reflectedNamespace = ReflectContentTypeForXmlSerializerNamespace();
+
+                XmlAttributeOverrides attributeOverrides = new XmlAttributeOverrides();
+                XmlAttributes attributes = new XmlAttributes()
+                {
+                    XmlRoot = new XmlRootAttribute()
+                    {
+                        Namespace = reflectedNamespace,
+                        ElementName = _soapAction
+                    }
+                };
+                attributeOverrides.Add(typeof(TContentType), attributes);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(TContentType), attributeOverrides);
                 serializer.Serialize(writer, _content);
 
                 writer.WriteEndElement();
@@ -152,6 +165,22 @@
                 httpContent.Headers.Add(IWebServiceEndpoint.HttpHeaderContentType, "application/xml; charset=US-ASCII");
                 return httpContent;
             }
+        }
+
+        public static string? ReflectContentTypeForXmlSerializerNamespace()
+        {
+            string? reflectedNamespace = typeof(TContentType)
+                .GetCustomAttributes(true)
+                .Select(x => x switch
+                {
+                    XmlTypeAttribute typeAttr => typeAttr.Namespace,
+                    XmlRootAttribute rootAttr => rootAttr.Namespace,
+                    _ => null
+                })
+                .Where(ns => !string.IsNullOrEmpty(ns))
+                .First();
+
+            return reflectedNamespace;
         }
     }
 }
