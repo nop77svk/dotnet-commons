@@ -7,11 +7,12 @@
     using System.Net.Http;
     using System.Text;
     using System.Text.Json;
+    using System.Threading.Tasks;
     using System.Web;
     using System.Xml;
     using System.Xml.Serialization;
 
-    public record RestWsEndpoint : IWebServiceEndpoint
+    public class RestWsEndpoint : IWebServiceEndpoint
     {
         protected List<string>? Resource { get; set; }
         private ICollection<KeyValuePair<string, string?>>? _query;
@@ -65,6 +66,21 @@
         {
             _content = content;
             return this;
+        }
+
+        public async IAsyncEnumerable<TResult> DeserializeStream<TResult>(Stream json)
+        {
+            if (json is null)
+                throw new ArgumentNullException("No JSON response received");
+
+            var result = await JsonSerializer.DeserializeAsync<TResult>(
+                json,
+                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IncludeFields = true });
+
+            if (result is null)
+                throw new ArgumentNullException("Cannot deserialize JSON response");
+
+            yield return result;
         }
 
         public virtual string UriResource

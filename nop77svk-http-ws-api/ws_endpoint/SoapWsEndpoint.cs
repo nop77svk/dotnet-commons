@@ -6,8 +6,10 @@
     using System.Linq;
     using System.Net.Http;
     using System.Text;
+    using System.Threading.Tasks;
     using System.Web;
     using System.Xml;
+    using System.Xml.Linq;
     using System.Xml.Serialization;
 
     public record SoapWsEndpoint<TContentType> : IWebServiceEndpoint
@@ -167,6 +169,33 @@
             }
         }
 
+        public static void DeserializeSoapEnvelope(string? soapResponse, out XElement? soapBody)
+        {
+            if (string.IsNullOrWhiteSpace(soapResponse))
+                throw new ArgumentNullException(soapResponse);
+
+            XNamespace soapEnvNs = SoapEnvelope_Constants.NamespaceUri;
+            XDocument root = XDocument.Parse(soapResponse);
+
+            XElement? soapEnvelope = root.Element(soapEnvNs + "Envelope");
+            if (soapEnvelope is null)
+                throw new SoapDeserializationError("SOAP Envelope missing");
+
+            soapBody = soapEnvelope.Element(soapEnvNs + "Body");
+            if (soapBody is null)
+                throw new SoapDeserializationError("SOAP Body missing");
+
+            XElement? soapFault = soapBody.Element(soapEnvNs + "Fault");
+            if (soapFault is not null)
+            {
+                throw new WebServiceError(string.Join(Environment.NewLine, soapFault
+                    .Elements()
+                    .Select(node => node.ToString())
+                    .Prepend("SOAP call response indicates an error!"))
+                );
+            }
+        }
+
         public static string? ReflectContentTypeForXmlSerializerNamespace()
         {
             string? reflectedNamespace = typeof(TContentType)
@@ -181,6 +210,55 @@
                 .First();
 
             return reflectedNamespace;
+        }
+
+        public async IAsyncEnumerable<TResult> DeserializeStream<TResult>(Stream response)
+        {
+            string reponseContent = await new StreamReader(response).ReadToEndAsync();
+            DeserializeSoapEnvelope(reponseContent, out XElement? soapBody);
+            if (soapBody is not null)
+            {
+                foreach (XElement oneBody in soapBody.Elements())
+                {
+                    TResult oneResult = DeserializeSoapBodyContent<TResult>(oneBody);
+                    yield return oneResult;
+                }
+            }
+        }
+
+        private TResult DeserializeSoapBodyContent<TResult>(XElement oneBody)
+        {
+            if (oneBody.Name.Namespace == SoapEnvelope_Constants.NamespaceUri)
+                throw new SoapDeserializationError($"SOAP Envelope element \"{oneBody.Name.LocalName}\" found within SOAP Body content");
+
+            string? reflectedNamespace = SoapWsEndpoint<TResult>.ReflectContentTypeForXmlSerializerNamespace();
+            XmlAttributeOverrides attributeOverrides = new XmlAttributeOverrides();
+            XmlAttributes attributes = new XmlAttributes()
+            {
+                XmlRoot = new XmlRootAttribute()
+                {
+                    Namespace = reflectedNamespace,
+                    ElementName = typeof(TResult).Name
+                }
+            };
+            attributeOverrides.Add(typeof(TResult), attributes);
+            XmlSerializer serializer = new XmlSerializer(typeof(TResult), attributeOverrides);
+
+            StringReader reader = new StringReader(oneBody.ToString());
+            TResult? result;
+            try
+            {
+                result = (TResult?)serializer.Deserialize(reader);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new SoapDeserializationError($"Failed to deserialize SOAP Body content with type {typeof(TResult)}:\n{oneBody}", e);
+            }
+
+            if (result is null)
+                throw new SoapDeserializationError($"SOAP Body content deserialized to NULL:\n{oneBody}");
+
+            return result;
         }
     }
 }

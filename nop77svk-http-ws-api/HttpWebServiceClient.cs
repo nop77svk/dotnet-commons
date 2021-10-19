@@ -80,90 +80,6 @@
             }
         }
 
-        public static async Task<TResult> DeserializeJsonResponse<TResult>(Stream? json)
-        {
-            if (json is null)
-                throw new ArgumentNullException("No JSON response received");
-
-            var result = await JsonSerializer.DeserializeAsync<TResult>(
-                json,
-                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IncludeFields = true });
-
-            if (result is null)
-                throw new ArgumentNullException("Cannot deserialize JSON response");
-
-            return result;
-        }
-
-        public static void DeserializeSoapEnvelope(string? soapResponse, out XElement? soapBody, Action<IEnumerable<XElement>>? soapFaultProcessor = null)
-        {
-            if (string.IsNullOrWhiteSpace(soapResponse))
-                throw new ArgumentNullException(soapResponse);
-
-            XNamespace soapEnvNs = SoapEnvelope_Constants.NamespaceUri;
-            XDocument root = XDocument.Parse(soapResponse);
-
-            XElement? soapEnvelope = root.Element(soapEnvNs + "Envelope");
-            if (soapEnvelope is null)
-                throw new SoapDeserializationError("SOAP Envelope missing");
-
-            soapBody = soapEnvelope.Element(soapEnvNs + "Body");
-            if (soapBody is null)
-                throw new SoapDeserializationError("SOAP Body missing");
-
-            XElement? soapFault = soapBody.Element(soapEnvNs + "Fault");
-            if (soapFault is not null)
-            {
-                if (soapFaultProcessor is not null)
-                {
-                    soapFaultProcessor(soapFault.Elements());
-                }
-                else
-                {
-                    throw new WebServiceError(string.Join(Environment.NewLine, soapFault
-                        .Elements()
-                        .Select(node => node.ToString())
-                        .Prepend("SOAP call response indicates an error!"))
-                    );
-                }
-            }
-        }
-
-        public static TBodyContent DeserializeSoapBodyContent<TBodyContent>(XElement soapBodyContent)
-        {
-            if (soapBodyContent.Name.Namespace == SoapEnvelope_Constants.NamespaceUri)
-                throw new SoapDeserializationError($"SOAP Envelope element \"{soapBodyContent.Name.LocalName}\" found within SOAP Body content");
-
-            string? reflectedNamespace = SoapWsEndpoint<TBodyContent>.ReflectContentTypeForXmlSerializerNamespace();
-            XmlAttributeOverrides attributeOverrides = new XmlAttributeOverrides();
-            XmlAttributes attributes = new XmlAttributes()
-            {
-                XmlRoot = new XmlRootAttribute()
-                {
-                    Namespace = reflectedNamespace,
-                    ElementName = typeof(TBodyContent).Name
-                }
-            };
-            attributeOverrides.Add(typeof(TBodyContent), attributes);
-            XmlSerializer serializer = new XmlSerializer(typeof(TBodyContent), attributeOverrides);
-
-            StringReader reader = new StringReader(soapBodyContent.ToString());
-            TBodyContent? result;
-            try
-            {
-                result = (TBodyContent?)serializer.Deserialize(reader);
-            }
-            catch (InvalidOperationException e)
-            {
-                throw new SoapDeserializationError($"Failed to deserialize SOAP Body content with type {typeof(TBodyContent)}:\n{soapBodyContent}", e);
-            }
-
-            if (result is null)
-                throw new SoapDeserializationError($"SOAP Body content deserialized to NULL:\n{soapBodyContent}");
-
-            return result;
-        }
-
         public static AuthenticationHeaderValue GetHeaderForBasicAuthentication(string? userName, string? userPassword)
         {
             if (string.IsNullOrEmpty(userName))
@@ -174,6 +90,13 @@
             string authenticationString = $"{userName}:{userPassword}";
             string base64EncodedAuthenticationString = Convert.ToBase64String(Encoding.ASCII.GetBytes(authenticationString));
             return new AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);
+        }
+
+        public async IAsyncEnumerable<TResult> EndpointGetObject<TResult>(IWebServiceEndpoint wsep)
+        {
+            Stream responseContent = await EndpointGetStream(wsep);
+            await foreach (TResult result in wsep.DeserializeStream<TResult>(responseContent))
+                yield return result;
         }
 
         public async Task<Stream> EndpointGetStream(IWebServiceEndpoint wsep)
@@ -227,33 +150,6 @@
         public async Task<string> EndpointGetString(IWebServiceEndpoint wsep)
         {
             return await new StreamReader(await EndpointGetStream(wsep)).ReadToEndAsync();
-        }
-
-        public async Task<TResult> EndpointGetJson<TResult>(IWebServiceEndpoint wsep)
-        {
-            Stream responseContent = await EndpointGetStream(wsep);
-            return await DeserializeJsonResponse<TResult>(responseContent);
-        }
-
-        public async IAsyncEnumerable<XElement> EndpointGetSoapBodyXML(IWebServiceEndpoint wsep)
-        {
-            string? responseContent = await EndpointGetString(wsep);
-            DeserializeSoapEnvelope(responseContent, out XElement? soapBody);
-            if (soapBody is not null)
-            {
-                foreach (XElement elm in soapBody.Elements())
-                    yield return elm;
-            }
-        }
-
-        public async IAsyncEnumerable<TResult> EndpointGetSoapBodyObject<TResult>(IWebServiceEndpoint wsep)
-        {
-            IAsyncEnumerable<XElement> responseContent = EndpointGetSoapBodyXML(wsep);
-            await foreach (XElement oneBody in responseContent)
-            {
-                TResult oneResult = DeserializeSoapBodyContent<TResult>(oneBody);
-                yield return oneResult;
-            }
         }
 
         private Uri CreateUri(IWebServiceEndpoint wsep)
