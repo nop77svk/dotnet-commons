@@ -12,7 +12,7 @@
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
-    public record SoapWsEndpoint<TContentType> : IWebServiceEndpoint
+    public record SoapWsEndpoint<TRequest> : IWebServiceEndpoint
     {
         private const string HttpHeaderSoapAction = "SoapAction";
 
@@ -20,9 +20,9 @@
         private readonly string _soapAction;
         private ICollection<KeyValuePair<string, string?>>? _query;
         private ICollection<KeyValuePair<string, string?>>? _headers;
-        private readonly TContentType _content;
+        private readonly TRequest _content;
 
-        public SoapWsEndpoint(string soapAction, TContentType content)
+        public SoapWsEndpoint(string soapAction, TRequest content)
         {
             if (soapAction.Contains('"'))
                 throw new ArgumentOutOfRangeException(nameof(soapAction), "Double quote detected in supplied SoapAction");
@@ -33,7 +33,7 @@
 
         public HttpMethod HttpMethod { get => HttpMethod.Post; }
 
-        public virtual SoapWsEndpoint<TContentType> AddResourceFolder(string? resourceFolder)
+        public virtual SoapWsEndpoint<TRequest> AddResourceFolder(string? resourceFolder)
         {
             if (string.IsNullOrWhiteSpace(resourceFolder))
                 throw new ArgumentOutOfRangeException(nameof(resourceFolder), "Empty resourceFolder to be added");
@@ -45,7 +45,7 @@
             return this;
         }
 
-        public SoapWsEndpoint<TContentType> AddQuery(string? key, string? value)
+        public SoapWsEndpoint<TRequest> AddQuery(string? key, string? value)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentOutOfRangeException(nameof(key), "Empty key supplied");
@@ -57,7 +57,7 @@
             return this;
         }
 
-        public SoapWsEndpoint<TContentType> AddHeader(string? key, string? value)
+        public SoapWsEndpoint<TRequest> AddHeader(string? key, string? value)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentOutOfRangeException(nameof(key), "Empty key supplied");
@@ -152,9 +152,9 @@
                         ElementName = _soapAction
                     }
                 };
-                attributeOverrides.Add(typeof(TContentType), attributes);
+                attributeOverrides.Add(typeof(TRequest), attributes);
 
-                XmlSerializer serializer = new XmlSerializer(typeof(TContentType), attributeOverrides);
+                XmlSerializer serializer = new XmlSerializer(typeof(TRequest), attributeOverrides);
                 serializer.Serialize(writer, _content);
 
                 writer.WriteEndElement();
@@ -198,7 +198,7 @@
 
         public static string? ReflectContentTypeForXmlSerializerNamespace()
         {
-            string? reflectedNamespace = typeof(TContentType)
+            string? reflectedNamespace = typeof(TRequest)
                 .GetCustomAttributes(true)
                 .Select(x => x switch
                 {
@@ -212,7 +212,7 @@
             return reflectedNamespace;
         }
 
-        public async IAsyncEnumerable<TResult> DeserializeStream<TResult>(Stream response)
+        public async IAsyncEnumerable<TResponse> DeserializeStream<TResponse>(Stream response)
         {
             string reponseContent = await new StreamReader(response).ReadToEndAsync();
             DeserializeSoapEnvelope(reponseContent, out XElement? soapBody);
@@ -220,7 +220,7 @@
             {
                 foreach (XElement oneBody in soapBody.Elements())
                 {
-                    TResult oneResult = DeserializeSoapBodyContent<TResult>(oneBody);
+                    TResponse oneResult = DeserializeSoapBodyContent<TResponse>(oneBody);
                     yield return oneResult;
                 }
             }
@@ -231,7 +231,7 @@
             if (oneBody.Name.Namespace == SoapEnvelope_Constants.NamespaceUri)
                 throw new SoapDeserializationError($"SOAP Envelope element \"{oneBody.Name.LocalName}\" found within SOAP Body content");
 
-            string? reflectedNamespace = SoapWsEndpoint<TResult>.ReflectContentTypeForXmlSerializerNamespace();
+            string? reflectedNamespace = ReflectContentTypeForXmlSerializerNamespace();
             XmlAttributeOverrides attributeOverrides = new XmlAttributeOverrides();
             XmlAttributes attributes = new XmlAttributes()
             {
