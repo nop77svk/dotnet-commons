@@ -7,6 +7,7 @@
     <Authors>Peter Hraško</Authors>
     <Company>Open source community</Company>
     <Product>Pierrе's .NET Commons</Product>
+	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>NoP77svk.Ext.Linq</RootNamespace>
     <Nullable>disable</Nullable>
+	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
