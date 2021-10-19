@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "analyzer-settings", "analyzer-settings\analyzer-settings.csproj", "{B25C13D5-F21A-4558-808B-CB3267EBB23E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-ws", "nop77svk-ws\nop77svk-ws.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-http-ws-api", "nop77svk-http-ws-api\nop77svk-http-ws-api.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk-misc\nop77svk-misc.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
 EndProject
