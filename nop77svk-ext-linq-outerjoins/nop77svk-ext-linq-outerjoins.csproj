@@ -5,6 +5,7 @@
     <RootNamespace>NoP77svk.Ext.Linq</RootNamespace>
     <Nullable>disable</Nullable>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

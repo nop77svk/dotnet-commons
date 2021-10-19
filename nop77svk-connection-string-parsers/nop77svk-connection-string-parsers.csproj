@@ -8,6 +8,7 @@
     <Company>Open source community</Company>
     <Product>Connection string parsers abstraction</Product>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

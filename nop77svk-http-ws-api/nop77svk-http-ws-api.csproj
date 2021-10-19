@@ -10,6 +10,7 @@
     <Product>HTTP WebServices API abstractions layer</Product>
     <Copyright>Copyleft</Copyright>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
