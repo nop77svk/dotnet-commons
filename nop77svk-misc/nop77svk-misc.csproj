@@ -4,9 +4,13 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>NoP77svk</RootNamespace>
     <Nullable>enable</Nullable>
+    <Authors>Peter Hraško</Authors>
+    <Company>Open source community</Company>
+    <Product>Pierrе's .NET Commons</Product>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <ErrorReport>none</ErrorReport>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
@@ -14,10 +18,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	<DebugType>portable</DebugType>
 	<DebugSymbols>true</DebugSymbols>
+	<NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+	  <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
 
   <ItemGroup>
