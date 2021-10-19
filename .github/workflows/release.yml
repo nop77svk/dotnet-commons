@@ -10,14 +10,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Verify commit exists in origin/main
+      run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+        git branch --remote --contains | grep origin/main
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release /p:Version=${VERSION}
     - name: Test
-      run: dotnet test --configuration Release
+      run: dotnet test --configuration Release /p:Version=${VERSION} --no-build
     - name: Pack
-      run: dotnet pack --configuration Release
+      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
     - name: Push
-      run: dotnet nuget push "nop77svk-*\bin\Release\*.nupkg" --skip-duplicate --source https://nuget.pkg.github.com/nop77svk/index.json --api-key ${GITHUB_TOKEN}
+      run: dotnet nuget nop77svk-*.${VERSION}.nupkg --source https://nuget.pkg.github.com/nop77svk/index.json --api-key ${GITHUB_TOKEN}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-	
