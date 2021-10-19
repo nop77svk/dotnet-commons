@@ -235,10 +235,10 @@
             return await DeserializeJsonResponse<TResult>(responseContent);
         }
 
-        public async IAsyncEnumerable<XElement> EndpointGetSoapBodyXML(IWebServiceEndpoint wsep, Action<IEnumerable<XElement>>? soapFaultProcessor = null)
+        public async IAsyncEnumerable<XElement> EndpointGetSoapBodyXML(IWebServiceEndpoint wsep)
         {
             string? responseContent = await EndpointGetString(wsep);
-            DeserializeSoapEnvelope(responseContent, out XElement? soapBody, soapFaultProcessor);
+            DeserializeSoapEnvelope(responseContent, out XElement? soapBody);
             if (soapBody is not null)
             {
                 foreach (XElement elm in soapBody.Elements())
@@ -246,7 +246,7 @@
             }
         }
 
-        public async IAsyncEnumerable<TResult> EndpointGetSoapBodyObject<TResult>(IWebServiceEndpoint wsep, Action<IEnumerable<XElement>>? soapFaultProcessor = null)
+        public async IAsyncEnumerable<TResult> EndpointGetSoapBodyObject<TResult>(IWebServiceEndpoint wsep)
         {
             IAsyncEnumerable<XElement> responseContent = EndpointGetSoapBodyXML(wsep);
             await foreach (XElement oneBody in responseContent)
