@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk-m
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-connection-string-parsers.tests", "nop77svk-connection-string-parsers.tests\nop77svk-connection-string-parsers.tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-tibcodv-api", "nop77svk-tibcodv-api\nop77svk-tibcodv-api.csproj", "{0B9D853F-A068-4C25-A64E-611A414F6A45}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-connection-string-parsers", "nop77svk-connection-string-parsers\nop77svk-connection-string-parsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nop77svk-ext-linq-outerjoins", "nop77svk-ext-linq-outerjoins\nop77svk-ext-linq-outerjoins.csproj", "{59ED6489-2BD0-4062-8CB1-B8B95816538F}"
