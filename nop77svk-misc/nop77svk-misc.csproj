@@ -9,7 +9,7 @@
     <Product>Pierrе's .NET Commons</Product>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageId>Miscellaneous helpers</PackageId>
+    <PackageId>NoP77svk.MiscellaneousHelpers</PackageId>
     <Description>* IEnumerable extensions for chunking,
 * small-footprint IAsyncEnumerable.ToList(), .ToArray(),
 * secure (non-printing/junk-printing) System.Console.ReadLine() equivalent for entering passwords,

@@ -11,7 +11,7 @@
     <Copyright>Copyleft</Copyright>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageId>WS API</PackageId>
+    <PackageId>NoP77svk.WebServiceClient</PackageId>
     <Description>WebService API client abstractions layer</Description>
   </PropertyGroup>
 

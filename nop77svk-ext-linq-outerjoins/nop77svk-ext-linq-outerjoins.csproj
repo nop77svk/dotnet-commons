@@ -16,7 +16,7 @@ Thanks to NetMage @ StackOverflow.com!
 Method parameter names (left, right,...) changed to better reflect their nature (outer, inner, anti, semi,...) and sometimes order of the parameters switched to adhere to usual natural SQL writing flow.</Description>
     <Copyright>Copyleft, I assume</Copyright>
     <Product>Pierre's .NET Commons</Product>
-    <PackageId>LINQ Outer Joins</PackageId>
+    <PackageId>NoP77svk.LinqOuterJoins</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
