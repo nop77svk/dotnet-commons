@@ -3,18 +3,20 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>NoP77svk.Analyzers</RootNamespace>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>NoP77svk.AnalyzerSettings</PackageId>
     <Authors>Peter Hraško</Authors>
     <Company>Freelance</Company>
     <Product>Pierre's .NET Commons</Product>
     <Description>Is this going to work when used via NuGet?</Description>
     <Copyright>Copyleft</Copyright>
+	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
