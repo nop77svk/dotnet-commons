@@ -5,10 +5,18 @@
     <RootNamespace>NoP77svk</RootNamespace>
     <Nullable>enable</Nullable>
     <Authors>Peter Hraško</Authors>
-    <Company>Open source community</Company>
+    <Company>Freelance</Company>
     <Product>Pierrе's .NET Commons</Product>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageId>Miscellaneous helpers</PackageId>
+    <Description>* IEnumerable extensions for chunking,
+* small-footprint IAsyncEnumerable.ToList(), .ToArray(),
+* secure (non-printing/junk-printing) System.Console.ReadLine() equivalent for entering passwords,
+* a few helper methods for dealing with (folder) paths parsing and adjustments,
+* a few String extensions for dealing with leading/trailing-whitespace-insensitive substring searches,
+* helper class for parsing of slash-enclosed regexps with trailing modifiers/options</Description>
+    <Copyright>Copyleft</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

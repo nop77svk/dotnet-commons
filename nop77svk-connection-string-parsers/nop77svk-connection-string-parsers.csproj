@@ -5,10 +5,13 @@
     <RootNamespace>NoP77svk.Data.Utils</RootNamespace>
     <Nullable>enable</Nullable>
     <Authors>Peter Hraško</Authors>
-    <Company>Open source community</Company>
-    <Product>Connection string parsers abstraction</Product>
+    <Company>Freelance</Company>
+    <Product>Pierre's .NET Commons</Product>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageId>Connection string parsers</PackageId>
+    <Copyright>Copyleft</Copyright>
+    <Description>Hmmm, maybe I will throw this one out of the solution completely.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

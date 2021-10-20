@@ -5,12 +5,14 @@
     <Nullable>enable</Nullable>
     <RootNamespace>NoP77svk.Web.WS</RootNamespace>
     <Version>2.0.0</Version>
-    <Company>Open source community</Company>
+    <Company>Freelance</Company>
     <Authors>Peter Hraško</Authors>
-    <Product>HTTP WebServices API abstractions layer</Product>
+    <Product>Pierre's .NET Commons</Product>
     <Copyright>Copyleft</Copyright>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageId>WS API</PackageId>
+    <Description>WebService API client abstractions layer</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
