@@ -24,6 +24,6 @@ jobs:
         dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
         rm -f analyzer-settings.*.nupkg
     - name: Push
-      run: dotnet nuget push nop77svk-*.${VERSION}.nupkg --source https://nuget.pkg.github.com/nop77svk/index.json --api-key ${GITHUB_TOKEN}
+      run: dotnet nuget push NoP77svk.*.${VERSION}.nupkg --source https://nuget.pkg.github.com/nop77svk/index.json --api-key ${GITHUB_TOKEN}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
