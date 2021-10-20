@@ -11,15 +11,16 @@
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
-    public record SoapWsEndpoint<TRequest> : IWebServiceEndpoint
+    public class SoapWsEndpoint<TRequest> : IWebServiceEndpoint
     {
         private const string HttpHeaderSoapAction = "SoapAction";
 
-        protected List<string>? Resource { get; set; }
+        private readonly TRequest _content;
         private readonly string _soapAction;
+
+        protected List<string>? Resource { get; set; }
         private ICollection<KeyValuePair<string, string?>>? _query;
         private ICollection<KeyValuePair<string, string?>>? _headers;
-        private readonly TRequest _content;
 
         public SoapWsEndpoint(string soapAction, TRequest content)
         {
