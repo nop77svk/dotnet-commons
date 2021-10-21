@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using NoP77svk.Exceptions;
 
-    public static class IEnumerableChunkExt
+    public static class EnumerableChunkingExt
     {
         public static IEnumerable<ChunkOf<TElement>> ChunkByMeasure<TElement>(
             this IEnumerable<TElement> self,
