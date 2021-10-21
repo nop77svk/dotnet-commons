@@ -29,6 +29,7 @@
 
 [assembly: SuppressMessage("Style", "SA0001")] // XML comment analysis disabled
 [assembly: SuppressMessage("Style", "SA1600")] // Elements should be documented
+[assembly: SuppressMessage("Style", "SA1601")] // Partial elements should be documented
 [assembly: SuppressMessage("Style", "SA1602")] // Enumeration items should be documented
 [assembly: SuppressMessage("Style", "SA1604")] // Element doc should have summary
 [assembly: SuppressMessage("Style", "SA1611")] // Missing parameter doc
