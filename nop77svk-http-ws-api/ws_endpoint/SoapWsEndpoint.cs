@@ -226,7 +226,7 @@
             }
         }
 
-        private TResult DeserializeSoapBodyContent<TResult>(XElement oneBody)
+        private static TResult DeserializeSoapBodyContent<TResult>(XElement oneBody)
         {
             if (oneBody.Name.Namespace == SoapEnvelope_Constants.NamespaceUri)
                 throw new SoapDeserializationError($"SOAP Envelope element \"{oneBody.Name.LocalName}\" found within SOAP Body content");
