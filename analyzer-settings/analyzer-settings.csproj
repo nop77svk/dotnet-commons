@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>NoP77svk.Analyzers</RootNamespace>
-    <PackageId>NoP77svk.AnalyzerSettings</PackageId>
+    <PackageId>nop77svk-analyzer-settings</PackageId>
     <Authors>Peter Hraško</Authors>
     <Company>Freelance</Company>
     <Product>Pierre's .NET Commons</Product>
-    <Description>Is this going to work when used via NuGet?</Description>
+    <Description>Analyzer warning suppressions, global config</Description>
     <Copyright>Copyleft</Copyright>
-	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
+	<RepositoryUrl></RepositoryUrl>
+	<RepositoryType></RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
