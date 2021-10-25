@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>NoP77svk.Linq</RootNamespace>
+	<Nullable>enable</Nullable>
+	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<Authors>Peter Hraško</Authors>
+	<Company>Freelance</Company>
+	<Description>
+		A few LINQ extensions to IEnumerable missing in the official System.Linq namespace.
+	</Description>
+	<Copyright>Copyleft</Copyright>
+	<Product>Pierre's .NET Commons</Product>
+	<PackageId>NoP77svk.Linq</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	<ErrorReport>none</ErrorReport>
+	<DebugType>none</DebugType>
+	<DebugSymbols>false</DebugSymbols>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<NoWarn>1701;1702;AD0001</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;AD0001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\nop77svk-misc\nop77svk-misc.csproj" />
+  </ItemGroup>
+
+</Project>
