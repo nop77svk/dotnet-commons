@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Ext.Linq
+﻿namespace NoP77svk.Linq.Ext
 {
     using System;
     using System.Collections.Generic;

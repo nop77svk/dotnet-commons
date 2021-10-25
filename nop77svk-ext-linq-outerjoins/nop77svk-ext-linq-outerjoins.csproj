@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <RootNamespace>NoP77svk.Ext.Linq</RootNamespace>
+    <RootNamespace>NoP77svk.Linq.Ext</RootNamespace>
     <Nullable>disable</Nullable>
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
