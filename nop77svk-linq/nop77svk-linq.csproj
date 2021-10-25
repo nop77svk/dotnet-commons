@@ -8,12 +8,11 @@
 	<RepositoryType>git</RepositoryType>
 	<Authors>Peter Hraško</Authors>
 	<Company>Freelance</Company>
-	<Description>
-		A few LINQ extensions to IEnumerable missing in the official System.Linq namespace.
-	</Description>
+	<Description>A few LINQ extensions to IEnumerable that I missed in the official System.Linq namespace.</Description>
 	<Copyright>Copyleft</Copyright>
 	<Product>Pierre's .NET Commons</Product>
 	<PackageId>NoP77svk.Linq</PackageId>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
