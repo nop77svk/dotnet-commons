@@ -12,6 +12,7 @@
     <PackageId>NoP77svk.ConnectionStringParsers</PackageId>
     <Copyright>Copyleft</Copyright>
     <Description>Hmmm, maybe I will throw this one out of the solution completely.</Description>
+    <NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,7 +23,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

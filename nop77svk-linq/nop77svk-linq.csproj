@@ -13,6 +13,7 @@
 	<Product>Pierre's .NET Commons</Product>
 	<PackageId>NoP77svk.Linq</PackageId>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -20,11 +21,9 @@
 	<DebugType>none</DebugType>
 	<DebugSymbols>false</DebugSymbols>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	<NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

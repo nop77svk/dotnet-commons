@@ -17,6 +17,7 @@ Method parameter names (left, right,...) changed to better reflect their nature 
     <Copyright>Copyleft, I assume</Copyright>
     <Product>Pierre's .NET Commons</Product>
     <PackageId>NoP77svk.LinqOuterJoins</PackageId>
+    <NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
