@@ -18,6 +18,7 @@ Method parameter names (left, right,...) changed to better reflect their nature 
     <Product>Pierre's .NET Commons</Product>
     <PackageId>NoP77svk.LinqOuterJoins</PackageId>
     <NoWarn>1701;1702;AD0001</NoWarn>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -29,6 +30,13 @@ Method parameter names (left, right,...) changed to better reflect their nature 
 
   <ItemGroup>
     <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
