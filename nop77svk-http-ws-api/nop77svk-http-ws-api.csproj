@@ -13,6 +13,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageId>NoP77svk.WebServiceClient</PackageId>
     <Description>WebService API client abstractions layer</Description>
+    <NoWarn>1701;1702;AD0001</NoWarn>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,7 +27,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	<DebugType>portable</DebugType>
 	<DebugSymbols>true</DebugSymbols>
-	<NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,6 +43,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

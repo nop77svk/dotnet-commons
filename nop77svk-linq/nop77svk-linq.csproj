@@ -8,11 +8,18 @@
 	<RepositoryType>git</RepositoryType>
 	<Authors>Peter Hraško</Authors>
 	<Company>Freelance</Company>
-	<Description>A few LINQ extensions to IEnumerable that I missed in the official System.Linq namespace.</Description>
+	<Description>A few LINQ extensions to IEnumerable that I missed in the official System.Linq namespace:
+🎯 chunking by count,
+🎯 chunking by an arbitrary integer measure,
+🎯 cross-product (cartesian product) with another IEnumerable,
+🎯 inner join with another IEnumerable via RegExp matching,
+🎯 unnesting of IEnumerable nested within IEnumerable.</Description>
 	<Copyright>Copyleft</Copyright>
 	<Product>Pierre's .NET Commons</Product>
 	<PackageId>NoP77svk.Linq</PackageId>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NoWarn>1701;1702;AD0001</NoWarn>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -20,11 +27,9 @@
 	<DebugType>none</DebugType>
 	<DebugSymbols>false</DebugSymbols>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	<NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +38,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\nop77svk-misc\nop77svk-misc.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

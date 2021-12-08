@@ -10,13 +10,13 @@
 	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageId>NoP77svk.MiscellaneousHelpers</PackageId>
-    <Description>* IEnumerable extensions for chunking,
-* small-footprint IAsyncEnumerable.ToList(), .ToArray(),
-* secure (non-printing/junk-printing) System.Console.ReadLine() equivalent for entering passwords,
-* a few helper methods for dealing with (folder) paths parsing and adjustments,
-* a few String extensions for dealing with leading/trailing-whitespace-insensitive substring searches,
-* helper class for parsing of slash-enclosed regexps with trailing modifiers/options</Description>
+    <Description>🎯 secure (non-printing/junk-printing) System.Console.ReadLine() equivalent for entering passwords,
+🎯 a few helper methods for dealing with (folder) paths parsing and adjustments,
+🎯 a few String extensions for dealing with leading/trailing-whitespace-insensitive substring searches,
+🎯 helper class for parsing of slash-enclosed regexps with trailing modifiers/options</Description>
     <Copyright>Copyleft</Copyright>
+    <NoWarn>1701;1702;AD0001</NoWarn>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -29,7 +29,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	<DebugType>portable</DebugType>
 	<DebugSymbols>true</DebugSymbols>
-	<NoWarn>1701;1702;AD0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,6 +44,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
