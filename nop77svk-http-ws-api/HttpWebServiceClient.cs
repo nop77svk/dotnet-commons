@@ -94,7 +94,7 @@
 
         public async IAsyncEnumerable<TResult> EndpointGetObject<TResult>(IWebServiceEndpoint wsep)
         {
-            Stream responseContent = await EndpointGetStream(wsep);
+            using Stream responseContent = await EndpointGetStream(wsep);
             await foreach (TResult result in wsep.DeserializeStream<TResult>(responseContent))
                 yield return result;
         }
@@ -149,7 +149,9 @@
 
         public async Task<string> EndpointGetString(IWebServiceEndpoint wsep)
         {
-            return await new StreamReader(await EndpointGetStream(wsep)).ReadToEndAsync();
+            using Stream responseContent = await EndpointGetStream(wsep);
+            using StreamReader responseReader = new StreamReader(responseContent);
+            return await responseReader.ReadToEndAsync();
         }
 
         private Uri CreateUri(IWebServiceEndpoint wsep)
