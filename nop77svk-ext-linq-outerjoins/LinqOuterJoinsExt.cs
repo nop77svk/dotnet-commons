@@ -56,7 +56,7 @@
             var hashLK = new HashSet<TKey>(from l in antiJoinedTable select antiJoinedKeySelector(l));
             return outerTable
                 .Where(r => !hashLK.Contains(outerKeySelector(r)))
-                .Select(r => resultSelector(default(TAntiRow), r));
+                .Select(r => resultSelector(default, r));
         }
 
         public static IEnumerable<TResult> FullOuterJoin<TOuterRow, TInnerRow, TKey, TResult>(
@@ -64,15 +64,14 @@
             IEnumerable<TInnerRow> innerTable,
             Func<TOuterRow, TKey> outerKeySelector,
             Func<TInnerRow, TKey> innerKeySelector,
-            Func<TOuterRow, TInnerRow, TResult> resultSelector) where TOuterRow : class
+            Func<TOuterRow, TInnerRow, TResult> resultSelector)
+            where TOuterRow : class
         {
             return outerTable
                 .LeftOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector)
                 .Concat(outerTable
                     .RightAntiSemiJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
-
-        private static Expression<Func<TP, TC, TResult>> CastSMBody<TP, TC, TResult>(LambdaExpression ex, TP unusedP, TC unusedC, TResult unusedRes) => (Expression<Func<TP, TC, TResult>>)ex;
 
         public static IQueryable<TResult> LeftOuterJoin<TOuterRow, TInnerRow, TKey, TResult>(
             this IQueryable<TOuterRow> outerTable,
@@ -124,8 +123,6 @@
                     .RightOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
-        private static Expression<Func<TP, TResult>> CastSBody<TP, TResult>(LambdaExpression ex, TP unusedP, TResult unusedRes) => (Expression<Func<TP, TResult>>)ex;
-
         public static IQueryable<TResult> RightAntiSemiJoin<TInnerRow, TOuterRow, TKey, TResult>(
             this IQueryable<TInnerRow> innerTable,
             IQueryable<TOuterRow> outerTable,
@@ -157,5 +154,9 @@
                 .Concat(outerTable
                     .RightAntiSemiJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
+
+        private static Expression<Func<TP, TC, TResult>> CastSMBody<TP, TC, TResult>(LambdaExpression ex, TP unusedP, TC unusedC, TResult unusedRes) => (Expression<Func<TP, TC, TResult>>)ex;
+
+        private static Expression<Func<TP, TResult>> CastSBody<TP, TResult>(LambdaExpression ex, TP unusedP, TResult unusedRes) => (Expression<Func<TP, TResult>>)ex;
     }
 }
