@@ -49,18 +49,16 @@
                     .RightOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
-        public static IEnumerable<TResult> AntiJoin<TOuterRow, TAntiRow, TKey, TResult>(
+        public static IEnumerable<TOuterRow> AntiJoin<TOuterRow, TAntiRow, TKey>(
             this IEnumerable<TOuterRow> outerTable,
             IEnumerable<TAntiRow> antiJoinedTable,
             Func<TOuterRow, TKey> outerKeySelector,
-            Func<TAntiRow, TKey> antiJoinKeySelector,
-            Func<TOuterRow, TAntiRow, TResult> resultSelector)
+            Func<TAntiRow, TKey> antiJoinKeySelector)
             where TKey : IEquatable<TKey>
         {
-            var hashLK = new HashSet<TKey>(from l in outerTable select outerKeySelector(l));
-            return antiJoinedTable
-                .Where(r => !hashLK.Contains(antiJoinKeySelector(r)))
-                .Select(r => resultSelector(default, r));
+            var hashLK = new HashSet<TKey>(from l in antiJoinedTable select antiJoinKeySelector(l));
+            return outerTable
+                .Where(r => !hashLK.Contains(outerKeySelector(r)));
         }
 
         public static IEnumerable<TResult> FullOuterJoin<TOuterRow, TInnerRow, TKey, TResult>(
@@ -75,7 +73,8 @@
             return outerTable
                 .LeftOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector)
                 .Concat(outerTable
-                    .AntiJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
+                    .AntiJoin(innerTable, outerKeySelector, innerKeySelector)
+                    .Select(r => resultSelector(r, default)));
         }
 
         public static IQueryable<TResult> LeftOuterJoin<TOuterRow, TInnerRow, TKey, TResult>(
