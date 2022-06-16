@@ -49,12 +49,12 @@
                     .RightOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
-        public static IEnumerable<TResult> AntiJoin<TAntiRow, TOuterRow, TKey, TResult>(
-            this IEnumerable<TAntiRow> outerTable,
-            IEnumerable<TOuterRow> antiJoinedTable,
-            Func<TAntiRow, TKey> outerKeySelector,
-            Func<TOuterRow, TKey> antiJoinKeySelector,
-            Func<TAntiRow, TOuterRow, TResult> resultSelector)
+        public static IEnumerable<TResult> AntiJoin<TOuterRow, TAntiRow, TKey, TResult>(
+            this IEnumerable<TOuterRow> outerTable,
+            IEnumerable<TAntiRow> antiJoinedTable,
+            Func<TOuterRow, TKey> outerKeySelector,
+            Func<TAntiRow, TKey> antiJoinKeySelector,
+            Func<TOuterRow, TAntiRow, TResult> resultSelector)
             where TKey : IEquatable<TKey>
         {
             var hashLK = new HashSet<TKey>(from l in outerTable select outerKeySelector(l));
@@ -131,17 +131,17 @@
                     .RightOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
-        public static IQueryable<TResult> AntiJoin<TInnerRow, TOuterRow, TKey, TResult>(
-            this IQueryable<TInnerRow> outerTable,
-            IQueryable<TOuterRow> antiJoinedTable,
-            Expression<Func<TInnerRow, TKey>> outerKeySelector,
-            Expression<Func<TOuterRow, TKey>> antiJoinKeySelector,
-            Expression<Func<TInnerRow, TOuterRow, TResult>> resultSelector)
+        public static IQueryable<TResult> AntiJoin<TOuterRow, TAntiRow, TKey, TResult>(
+            this IQueryable<TOuterRow> outerTable,
+            IQueryable<TAntiRow> antiJoinedTable,
+            Expression<Func<TOuterRow, TKey>> outerKeySelector,
+            Expression<Func<TAntiRow, TKey>> antiJoinKeySelector,
+            Expression<Func<TOuterRow, TAntiRow, TResult>> resultSelector)
             where TKey : IEquatable<TKey>
         {
-            var sampleAnonLgR = new { leftg = default(IEnumerable<TInnerRow>), right = default(TOuterRow) };
+            var sampleAnonLgR = new { leftg = default(IEnumerable<TOuterRow>), right = default(TAntiRow) };
             var parmLgR = Expression.Parameter(sampleAnonLgR.GetType(), "lgr");
-            var argLeft = Expression.Constant(default(TInnerRow), typeof(TInnerRow));
+            var argLeft = Expression.Constant(default(TOuterRow), typeof(TOuterRow));
             var argRight = Expression.PropertyOrField(parmLgR, "right");
             var newrightrs = CastSBody(Expression.Lambda(Expression.Invoke(resultSelector, argLeft, argRight), parmLgR), sampleAnonLgR, default(TResult));
 
