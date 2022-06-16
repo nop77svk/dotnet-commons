@@ -13,6 +13,7 @@
             Func<TOuterRow, TKey> outerKeySelector,
             Func<TInnerRow, TKey> innerKeySelector,
             Func<TOuterRow, TInnerRow, TResult> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             return from left in outerTable
                     join right in innerTable on outerKeySelector(left) equals innerKeySelector(right) into temp
@@ -26,6 +27,7 @@
             Func<TInnerRow, TKey> innerKeySelector,
             Func<TOuterRow, TKey> outerKeySelector,
             Func<TInnerRow, TOuterRow, TResult> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             return from right in outerTable
                     join left in innerTable on outerKeySelector(right) equals innerKeySelector(left) into temp
@@ -39,6 +41,7 @@
             Func<TOuterRow, TKey> outerKeySelector,
             Func<TInnerRow, TKey> innerKeySelector,
             Func<TOuterRow, TInnerRow, TResult> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             return outerTable
                 .LeftOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector)
@@ -46,16 +49,17 @@
                     .RightOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
-        public static IEnumerable<TResult> RightAntiSemiJoin<TAntiRow, TOuterRow, TKey, TResult>(
-            this IEnumerable<TAntiRow> antiJoinedTable,
-            IEnumerable<TOuterRow> outerTable,
-            Func<TAntiRow, TKey> antiJoinedKeySelector,
-            Func<TOuterRow, TKey> outerKeySelector,
+        public static IEnumerable<TResult> AntiJoin<TAntiRow, TOuterRow, TKey, TResult>(
+            this IEnumerable<TAntiRow> outerTable,
+            IEnumerable<TOuterRow> antiJoinedTable,
+            Func<TAntiRow, TKey> outerKeySelector,
+            Func<TOuterRow, TKey> antiJoinKeySelector,
             Func<TAntiRow, TOuterRow, TResult> resultSelector)
+            where TKey : IEquatable<TKey>
         {
-            var hashLK = new HashSet<TKey>(from l in antiJoinedTable select antiJoinedKeySelector(l));
-            return outerTable
-                .Where(r => !hashLK.Contains(outerKeySelector(r)))
+            var hashLK = new HashSet<TKey>(from l in outerTable select outerKeySelector(l));
+            return antiJoinedTable
+                .Where(r => !hashLK.Contains(antiJoinKeySelector(r)))
                 .Select(r => resultSelector(default, r));
         }
 
@@ -66,11 +70,12 @@
             Func<TInnerRow, TKey> innerKeySelector,
             Func<TOuterRow, TInnerRow, TResult> resultSelector)
             where TOuterRow : class
+            where TKey : IEquatable<TKey>
         {
             return outerTable
                 .LeftOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector)
                 .Concat(outerTable
-                    .RightAntiSemiJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
+                    .AntiJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
         public static IQueryable<TResult> LeftOuterJoin<TOuterRow, TInnerRow, TKey, TResult>(
@@ -79,6 +84,7 @@
             Expression<Func<TOuterRow, TKey>> outerKeySelector,
             Expression<Func<TInnerRow, TKey>> innerKeySelector,
             Expression<Func<TOuterRow, TInnerRow, TResult>> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             var sampleAnonLR = new { left = default(TOuterRow), right = default(IEnumerable<TInnerRow>) };
             var parmP = Expression.Parameter(sampleAnonLR.GetType(), "p");
@@ -98,6 +104,7 @@
             Expression<Func<TInnerRow, TKey>> innerKeySelector,
             Expression<Func<TOuterRow, TKey>> outerKeySelector,
             Expression<Func<TInnerRow, TOuterRow, TResult>> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             var sampleAnonLR = new { leftg = default(IEnumerable<TInnerRow>), right = default(TOuterRow) };
             var parmP = Expression.Parameter(sampleAnonLR.GetType(), "p");
@@ -116,6 +123,7 @@
             Expression<Func<TOuterRow, TKey>> outerKeySelector,
             Expression<Func<TInnerRow, TKey>> innerKeySelector,
             Expression<Func<TOuterRow, TInnerRow, TResult>> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             return outerTable
                 .LeftOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector)
@@ -123,12 +131,13 @@
                     .RightOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
-        public static IQueryable<TResult> RightAntiSemiJoin<TInnerRow, TOuterRow, TKey, TResult>(
-            this IQueryable<TInnerRow> innerTable,
-            IQueryable<TOuterRow> outerTable,
-            Expression<Func<TInnerRow, TKey>> innerKeySelector,
-            Expression<Func<TOuterRow, TKey>> outerKeySelector,
+        public static IQueryable<TResult> AntiJoin<TInnerRow, TOuterRow, TKey, TResult>(
+            this IQueryable<TInnerRow> outerTable,
+            IQueryable<TOuterRow> antiJoinedTable,
+            Expression<Func<TInnerRow, TKey>> outerKeySelector,
+            Expression<Func<TOuterRow, TKey>> antiJoinKeySelector,
             Expression<Func<TInnerRow, TOuterRow, TResult>> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             var sampleAnonLgR = new { leftg = default(IEnumerable<TInnerRow>), right = default(TOuterRow) };
             var parmLgR = Expression.Parameter(sampleAnonLgR.GetType(), "lgr");
@@ -136,8 +145,8 @@
             var argRight = Expression.PropertyOrField(parmLgR, "right");
             var newrightrs = CastSBody(Expression.Lambda(Expression.Invoke(resultSelector, argLeft, argRight), parmLgR), sampleAnonLgR, default(TResult));
 
-            return outerTable
-                .GroupJoin(innerTable, outerKeySelector, innerKeySelector, (right, leftg) => new { leftg, right })
+            return antiJoinedTable
+                .GroupJoin(outerTable, antiJoinKeySelector, outerKeySelector, (right, leftg) => new { leftg, right })
                 .Where(lgr => !lgr.leftg.Any())
                 .Select(newrightrs);
         }
@@ -148,11 +157,12 @@
             Expression<Func<TOuterTable, TKey>> outerKeySelector,
             Expression<Func<TInnerTable, TKey>> innerKeySelector,
             Expression<Func<TOuterTable, TInnerTable, TResult>> resultSelector)
+            where TKey : IEquatable<TKey>
         {
             return outerTable
                 .LeftOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector)
                 .Concat(outerTable
-                    .RightAntiSemiJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
+                    .AntiJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
         private static Expression<Func<TP, TC, TResult>> CastSMBody<TP, TC, TResult>(LambdaExpression ex, TP unusedP, TC unusedC, TResult unusedRes) => (Expression<Func<TP, TC, TResult>>)ex;
