@@ -92,68 +92,24 @@
             return new AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);
         }
 
+        public async Task EndpointCall(IWebServiceEndpoint wsep)
+        {
+            using HttpResponseMessage response = await EndpointGetHttpResponse(wsep);
+        }
+
         public async IAsyncEnumerable<TResult> EndpointGetObject<TResult>(IWebServiceEndpoint wsep)
         {
-            using Stream responseContent = await EndpointGetStream(wsep);
+            using HttpResponseMessage response = await EndpointGetHttpResponse(wsep);
+            using Stream responseContent = await response.Content.ReadAsStreamAsync();
             await foreach (TResult result in wsep.DeserializeStream<TResult>(responseContent))
                 yield return result;
         }
 
-        public async Task<Stream> EndpointGetStream(IWebServiceEndpoint wsep)
-        {
-            Uri requestUri = CreateUri(wsep);
-
-            using HttpRequestMessage req = new HttpRequestMessage()
-            {
-                Method = wsep.HttpMethod,
-                RequestUri = requestUri
-            };
-
-            try
-            {
-                foreach (KeyValuePair<string, string?> headerItem in wsep.Headers)
-                    req.Headers.Add(headerItem.Key, headerItem.Value);
-
-                if (wsep.HasContent)
-                    req.Content = wsep.Content;
-
-                HttpRequestPostprocess?.Invoke(req);
-
-                using Task<HttpResponseMessage> sendAsyncTask = _client.SendAsync(req);
-                using HttpResponseMessage response = await sendAsyncTask;
-                HttpResponsePostprocess?.Invoke(response);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    StringBuilder errorText = new StringBuilder();
-                    errorText.AppendLine("HTTP response exception!");
-                    AggregateResponseAsString(response, errorText);
-                    throw new HttpRequestException(errorText.ToString(), null, response.StatusCode);
-                }
-                else
-                {
-                    using Task<Stream> readResponseContentStreamTask = response.Content.ReadAsStreamAsync();
-                    return await readResponseContentStreamTask;
-                }
-            }
-            catch (Exception e)
-            {
-                StringBuilder errorText = new StringBuilder();
-                errorText.AppendLine("HTTP request exception!");
-                AggregateRequestAsString(req, errorText);
-
-                req.Content?.Dispose();
-
-                System.Net.HttpStatusCode? respStatusCode = e is HttpRequestException exception ? exception.StatusCode : null;
-                throw new HttpRequestException(errorText.ToString(), e, respStatusCode);
-            }
-        }
-
         public async Task<string> EndpointGetString(IWebServiceEndpoint wsep)
         {
-            using Stream responseContent = await EndpointGetStream(wsep);
-            using StreamReader responseReader = new StreamReader(responseContent);
-            return await responseReader.ReadToEndAsync();
+            using HttpResponseMessage response = await EndpointGetHttpResponse(wsep);
+            string result = await response.Content.ReadAsStringAsync();
+            return result;
         }
 
         private Uri CreateUri(IWebServiceEndpoint wsep)
@@ -179,6 +135,53 @@
                 builder.Query = wsep.UriQuery;
 
             return builder.Uri;
+        }
+
+        private async Task<HttpResponseMessage> EndpointGetHttpResponse(IWebServiceEndpoint wsep)
+        {
+            Uri requestUri = CreateUri(wsep);
+
+            using HttpRequestMessage req = new HttpRequestMessage()
+            {
+                Method = wsep.HttpMethod,
+                RequestUri = requestUri
+            };
+
+            try
+            {
+                foreach (KeyValuePair<string, string?> headerItem in wsep.Headers)
+                    req.Headers.Add(headerItem.Key, headerItem.Value);
+
+                if (wsep.HasContent)
+                    req.Content = wsep.Content;
+
+                HttpRequestPostprocess?.Invoke(req);
+
+                using Task<HttpResponseMessage> sendAsyncTask = _client.SendAsync(req);
+                HttpResponseMessage response = await sendAsyncTask; // 2do! memory/resource leak! HttpResponseMessage : IDisposable
+                HttpResponsePostprocess?.Invoke(response);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    StringBuilder errorText = new StringBuilder();
+                    errorText.AppendLine("HTTP response exception!");
+                    AggregateResponseAsString(response, errorText);
+                    throw new HttpRequestException(errorText.ToString(), null, response.StatusCode);
+                }
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                StringBuilder errorText = new StringBuilder();
+                errorText.AppendLine("HTTP request exception!");
+                AggregateRequestAsString(req, errorText);
+
+                req.Content?.Dispose();
+
+                System.Net.HttpStatusCode? respStatusCode = e is HttpRequestException exception ? exception.StatusCode : null;
+                throw new HttpRequestException(errorText.ToString(), e, respStatusCode);
+            }
         }
     }
 }
