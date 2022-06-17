@@ -7,6 +7,8 @@
     <RootNamespace>NoP77svk.Data.Utils.Tests</RootNamespace>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NoWarn>NETSDK1182</NoWarn>
+    <IsPublishable>False</IsPublishable>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
