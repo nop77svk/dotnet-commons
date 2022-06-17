@@ -119,7 +119,8 @@
 
                 HttpRequestPostprocess?.Invoke(req);
 
-                HttpResponseMessage response = await _client.SendAsync(req);
+                using Task<HttpResponseMessage> sendAsyncTask = _client.SendAsync(req);
+                using HttpResponseMessage response = await sendAsyncTask;
                 HttpResponsePostprocess?.Invoke(response);
 
                 if (!response.IsSuccessStatusCode)
@@ -131,7 +132,8 @@
                 }
                 else
                 {
-                    return await response.Content.ReadAsStreamAsync();
+                    using Task<Stream> readResponseContentStreamTask = response.Content.ReadAsStreamAsync();
+                    return await readResponseContentStreamTask;
                 }
             }
             catch (Exception e)
