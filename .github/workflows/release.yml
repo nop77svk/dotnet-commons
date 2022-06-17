@@ -36,6 +36,7 @@ jobs:
     - name: Push
       run: |
         pwd
+        ls -al *.nupkg
         dotnet nuget push NoP77svk.*.${VERSION}.nupkg --source https://nuget.pkg.github.com/nop77svk/index.json --api-key ${GITHUB_TOKEN}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
