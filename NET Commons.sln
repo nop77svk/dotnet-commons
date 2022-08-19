@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.WS.Client", "nop77svk-http-ws-api\Web.WS.Client.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.WS.Client", "Web.WS.Client\Web.WS.Client.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers.Tests", "nop77svk-connection-string-parsers.tests\Text.ConnectionStringParsers.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers.Tests", "Text.ConnectionStringParsers.Tests\Text.ConnectionStringParsers.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers", "nop77svk-connection-string-parsers\Text.ConnectionStringParsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers", "Text.ConnectionStringParsers\Text.ConnectionStringParsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "nop77svk-linq\Linq.csproj", "{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "Linq\Linq.csproj", "{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq.OuterJoins.Tests", "nop77svk-ext-linq-outerjoins.tests\Linq.OuterJoins.Tests.csproj", "{AFD99B8E-CE46-4DE9-A2E0-D9BE97BCA4B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq.OuterJoins.Tests", "Linq.OuterJoins.Tests\Linq.OuterJoins.Tests.csproj", "{AFD99B8E-CE46-4DE9-A2E0-D9BE97BCA4B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DA891DA-2782-474C-9F09-CD11D5EAE8D2}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text", "Text\Text.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text.IO", "Text.IO\Text.IO.csproj", "{4A5E4199-9741-494A-81AA-740343A80F69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.OuterJoins", "Linq.Joins\Linq.OuterJoins.csproj", "{C3F7D5BA-95F8-4E49-AF16-ABF6056D4158}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.OuterJoins", "Linq.OuterJoins\Linq.OuterJoins.csproj", "{C3F7D5BA-95F8-4E49-AF16-ABF6056D4158}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text.RegExp", "Text.RegExp\Text.RegExp.csproj", "{D989FBD4-0F7E-4422-AFFA-9B7C6E902A28}"
 EndProject
