@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
-    <RootNamespace>NoP77svk.Data.Utils.Tests</RootNamespace>
+    <RootNamespace>NoP77svk.ConnectionStringParsers.Tests</RootNamespace>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NoWarn>NETSDK1182</NoWarn>
     <IsPublishable>False</IsPublishable>
