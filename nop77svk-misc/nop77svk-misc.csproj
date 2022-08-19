@@ -55,9 +55,4 @@
 		</None>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="IO\" />
-	  <Folder Include="Text\" />
-	</ItemGroup>
-
 </Project>
