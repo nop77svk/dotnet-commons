@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.WS", "nop77svk-http-ws-api\Web.WS.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.WS.Client", "nop77svk-http-ws-api\Web.WS.Client.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk-misc\nop77svk-misc.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
 EndProject

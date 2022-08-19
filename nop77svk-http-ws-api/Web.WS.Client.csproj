@@ -3,18 +3,19 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<RootNamespace>NoP77svk.Web.WS</RootNamespace>
-		<Version>2.0.0</Version>
 		<Company>Freelance</Company>
 		<Authors>Peter Hraško</Authors>
 		<Product>Pierre's .NET Commons</Product>
 		<Copyright>Copyleft</Copyright>
 		<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageId>NoP77svk.WebServiceClient</PackageId>
 		<Description>WebService API client abstractions layer</Description>
 		<NoWarn>1701;1702;AD0001;NETSDK1182</NoWarn>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<RootNamespace>NoP77svk.Web.WS.Client</RootNamespace>
+		<AssemblyName>NoP77svk.Web.WS.Client</AssemblyName>
+		<PackageId>NoP77svk.Web.WS.Client</PackageId>
+		<GeneratePackageOnBuild>Web.WS.Client</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
