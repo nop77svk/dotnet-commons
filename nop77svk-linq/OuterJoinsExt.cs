@@ -1,11 +1,11 @@
-﻿namespace NoP77svk.Linq.Ext
+﻿namespace NoP77svk.Linq
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
 
-    public static class LinqOuterJoinsExt
+    public static class OuterJoinsExt
     {
         public static IEnumerable<TResult> LeftOuterJoin<TOuterRow, TInnerRow, TKey, TResult>(
             this IEnumerable<TOuterRow> outerTable,
