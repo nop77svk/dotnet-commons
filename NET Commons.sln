@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-connection-string-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-ext-linq-outerjoins", "nop77svk-ext-linq-outerjoins\nop77svk-ext-linq-outerjoins.csproj", "{59ED6489-2BD0-4062-8CB1-B8B95816538F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-linq", "nop77svk-linq\nop77svk-linq.csproj", "{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "nop77svk-linq\Linq.csproj", "{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nop77svk-ext-linq-outerjoins.tests", "nop77svk-ext-linq-outerjoins.tests\nop77svk-ext-linq-outerjoins.tests.csproj", "{AFD99B8E-CE46-4DE9-A2E0-D9BE97BCA4B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-ext-linq-outerjoins.tests", "nop77svk-ext-linq-outerjoins.tests\nop77svk-ext-linq-outerjoins.tests.csproj", "{AFD99B8E-CE46-4DE9-A2E0-D9BE97BCA4B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
