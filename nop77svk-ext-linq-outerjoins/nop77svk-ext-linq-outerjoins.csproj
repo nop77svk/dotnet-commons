@@ -41,8 +41,8 @@ Method parameter names (left, right,...) changed to better reflect their nature 
 	</ItemGroup>
 
 	<ItemGroup>
-    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
-  </ItemGroup>
+		<Compile Include="..\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
+	</ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE">

@@ -34,6 +34,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <Compile Include="..\analyzer-settings\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
-  </ItemGroup>
+		<Compile Include="..\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
+	</ItemGroup>
 </Project>

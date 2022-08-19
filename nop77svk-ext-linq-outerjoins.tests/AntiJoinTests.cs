@@ -1,11 +1,10 @@
-﻿namespace NoP77svk.Linq.Ext.Tests
+﻿namespace NoP77svk.Linq.Tests
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using NoP77svk.Linq.Ext;
+    using NoP77svk.Linq;
 
     [TestClass]
     public class AntiJoinTests
