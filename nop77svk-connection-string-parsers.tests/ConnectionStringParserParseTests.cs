@@ -1,7 +1,7 @@
-﻿namespace NoP77svk.Data.Utils.Tests
+﻿namespace NoP77svk.Text.ConnectionStringParsers.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using NoP77svk.Data.Utils;
+    using NoP77svk.Text.ConnectionStringParsers;
 
     [TestClass]
     public class ConnectionStringParserParseTests

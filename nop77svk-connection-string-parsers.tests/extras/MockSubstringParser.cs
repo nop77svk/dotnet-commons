@@ -1,6 +1,6 @@
-﻿namespace NoP77svk.Data.Utils.Tests
+﻿namespace NoP77svk.Text.ConnectionStringParsers.Tests
 {
-    using NoP77svk.Data.Utils;
+    using NoP77svk.Text.ConnectionStringParsers;
 
     public class MockSubstringParser : ISubstringParser
     {
