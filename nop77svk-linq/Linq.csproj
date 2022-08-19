@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<RootNamespace>NoP77svk.Linq</RootNamespace>
 		<Nullable>enable</Nullable>
 		<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -18,10 +17,12 @@
 		</Description>
 		<Copyright>Copyleft</Copyright>
 		<Product>Pierre's .NET Commons</Product>
-		<PackageId>NoP77svk.Linq</PackageId>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<NoWarn>1701;1702;AD0001</NoWarn>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<RootNamespace>NoP77svk.Linq</RootNamespace>
+		<AssemblyName>NoP77svk.Linq</AssemblyName>
+		<PackageId>NoP77svk.Console</PackageId>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

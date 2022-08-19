@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<RootNamespace>NoP77svk.Linq.Ext.Tests</RootNamespace>
+		<RootNamespace>NoP77svk.Linq.Tests</RootNamespace>
 		<Nullable>enable</Nullable>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<NoWarn>NETSDK1182</NoWarn>
