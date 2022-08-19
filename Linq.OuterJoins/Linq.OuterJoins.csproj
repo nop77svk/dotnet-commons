@@ -5,10 +5,11 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<Product>...</Product>
 		<Authors>Peter Hraško</Authors>
-		<Company>Open source community</Company>
-		<Copyright>Practically copyleft</Copyright>
+		<Product>Pierre's .NET Commons</Product>
+		<Copyright>Copyleft</Copyright>
+		<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 		<NoWarn>1701;1702;AD0001;NETSDK1182</NoWarn>
 		<RootNamespace>NoP77svk.Linq.OuterJoins</RootNamespace>
 		<AssemblyName>NoP77svk.Linq.OuterJoins</AssemblyName>

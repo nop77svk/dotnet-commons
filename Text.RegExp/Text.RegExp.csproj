@@ -5,6 +5,8 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 		<Product>...</Product>
 		<Authors>Peter Hraško</Authors>
 		<Company>Open source community</Company>

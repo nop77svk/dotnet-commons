@@ -5,11 +5,10 @@
 		<RootNamespace>NoP77svk.Data.Utils</RootNamespace>
 		<Nullable>enable</Nullable>
 		<Authors>Peter Hraško</Authors>
-		<Company>Freelance</Company>
 		<Product>Pierre's .NET Commons</Product>
+		<Copyright>Copyleft</Copyright>
 		<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<Copyright>Copyleft</Copyright>
 		<Description>Hmmm, maybe I will throw this one out of the solution completely.</Description>
 		<NoWarn>1701;1702;AD0001</NoWarn>
 		<RootNamespace>NoP77svk.Text.ConnectionStringParsers</RootNamespace>
