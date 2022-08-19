@@ -12,7 +12,10 @@
 		<Copyright>Copyleft</Copyright>
 		<Description>Hmmm, maybe I will throw this one out of the solution completely.</Description>
 		<NoWarn>1701;1702;AD0001</NoWarn>
-		<PackageId>NoP77svk.ConnectionStringParsers</PackageId>
+		<RootNamespace>NoP77svk.Text.ConnectionStringParsers</RootNamespace>
+		<AssemblyName>NoP77svk.Text.ConnectionStringParsers</AssemblyName>
+		<PackageId>NoP77svk.Text.ConnectionStringParsers</PackageId>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

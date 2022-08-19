@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Data.Utils
+﻿namespace NoP77svk.Text.ConnectionStringParsers
 {
     using System;
 
