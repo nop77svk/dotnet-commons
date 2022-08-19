@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text", "Text\Text.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text.IO", "Text.IO\Text.IO.csproj", "{4A5E4199-9741-494A-81AA-740343A80F69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.OuterJoins", "Linq.Joins\Linq.OuterJoins.csproj", "{C3F7D5BA-95F8-4E49-AF16-ABF6056D4158}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{4A5E4199-9741-494A-81AA-740343A80F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A5E4199-9741-494A-81AA-740343A80F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A5E4199-9741-494A-81AA-740343A80F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F7D5BA-95F8-4E49-AF16-ABF6056D4158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F7D5BA-95F8-4E49-AF16-ABF6056D4158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F7D5BA-95F8-4E49-AF16-ABF6056D4158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F7D5BA-95F8-4E49-AF16-ABF6056D4158}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

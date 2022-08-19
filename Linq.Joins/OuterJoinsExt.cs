@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Linq
+﻿namespace NoP77svk.Linq.Joins
 {
     using System;
     using System.Collections.Generic;
@@ -66,7 +66,7 @@
             IEnumerable<TInnerRow> innerTable,
             Func<TOuterRow, TKey> outerKeySelector,
             Func<TInnerRow, TKey> innerKeySelector,
-            Func<TOuterRow, TInnerRow, TResult> resultSelector)
+            Func<TOuterRow, TInnerRow?, TResult> resultSelector)
             where TOuterRow : class
             where TKey : IEquatable<TKey>
         {

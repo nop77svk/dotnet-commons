@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using NoP77svk.Linq;
+    using NoP77svk.Linq.Joins;
 
     [TestClass]
     public class AntiJoinTests

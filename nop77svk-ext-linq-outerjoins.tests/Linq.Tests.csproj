@@ -44,6 +44,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Linq.Joins\Linq.OuterJoins.csproj" />
 		<ProjectReference Include="..\nop77svk-linq\Linq.csproj" />
 	</ItemGroup>
 
