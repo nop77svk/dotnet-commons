@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "nop77svk-linq\Linq.csproj", "{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq.Tests", "nop77svk-ext-linq-outerjoins.tests\Linq.Tests.csproj", "{AFD99B8E-CE46-4DE9-A2E0-D9BE97BCA4B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq.OuterJoins.Tests", "nop77svk-ext-linq-outerjoins.tests\Linq.OuterJoins.Tests.csproj", "{AFD99B8E-CE46-4DE9-A2E0-D9BE97BCA4B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DA891DA-2782-474C-9F09-CD11D5EAE8D2}"
 	ProjectSection(SolutionItems) = preProject

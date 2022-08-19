@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<RootNamespace>NoP77svk.Linq.Tests</RootNamespace>
+		<RootNamespace>NoP77svk.Linq.OuterJoins.Tests</RootNamespace>
 		<Nullable>enable</Nullable>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<NoWarn>NETSDK1182</NoWarn>

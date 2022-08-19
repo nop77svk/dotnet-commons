@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Linq.Tests
+﻿namespace NoP77svk.Linq.OuterJoins.Tests
 {
     using System;
     using System.Collections.Generic;
