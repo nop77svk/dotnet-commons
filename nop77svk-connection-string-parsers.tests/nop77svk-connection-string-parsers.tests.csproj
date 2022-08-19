@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\nop77svk-connection-string-parsers\nop77svk-connection-string-parsers.csproj" />
+    <ProjectReference Include="..\nop77svk-connection-string-parsers\ConnectionStringParsers.csproj" />
   </ItemGroup>
 
   <ItemGroup>
