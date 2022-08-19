@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectionStringParsers.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectionStringParsers", "nop77svk-connection-string-parsers\ConnectionStringParsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-ext-linq-outerjoins", "nop77svk-ext-linq-outerjoins\nop77svk-ext-linq-outerjoins.csproj", "{59ED6489-2BD0-4062-8CB1-B8B95816538F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "nop77svk-linq\Linq.csproj", "{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-ext-linq-outerjoins.tests", "nop77svk-ext-linq-outerjoins.tests\nop77svk-ext-linq-outerjoins.tests.csproj", "{AFD99B8E-CE46-4DE9-A2E0-D9BE97BCA4B0}"
@@ -44,10 +42,6 @@ Global
 		{8987092F-10DA-4918-867A-69F85DFE4822}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8987092F-10DA-4918-867A-69F85DFE4822}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8987092F-10DA-4918-867A-69F85DFE4822}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59ED6489-2BD0-4062-8CB1-B8B95816538F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59ED6489-2BD0-4062-8CB1-B8B95816538F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59ED6489-2BD0-4062-8CB1-B8B95816538F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59ED6489-2BD0-4062-8CB1-B8B95816538F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
