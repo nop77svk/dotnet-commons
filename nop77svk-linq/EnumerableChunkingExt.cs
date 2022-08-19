@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using NoP77svk.Exceptions;
+    using NoP77svk.Commons;
 
     public static class EnumerableChunkingExt
     {

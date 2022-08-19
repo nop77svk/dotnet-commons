@@ -5,8 +5,6 @@ VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.WS.Client", "nop77svk-http-ws-api\Web.WS.Client.csproj", "{F882A3EC-F2C5-4F06-99E0-14458491C0E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk-misc\nop77svk-misc.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers.Tests", "nop77svk-connection-string-parsers.tests\Text.ConnectionStringParsers.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers", "nop77svk-connection-string-parsers\Text.ConnectionStringParsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
@@ -30,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.OuterJoins", "Linq.Joi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text.RegExp", "Text.RegExp\Text.RegExp.csproj", "{D989FBD4-0F7E-4422-AFFA-9B7C6E902A28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons", "Commons\Commons.csproj", "{26E1B285-702A-45D1-B716-0D5DAF136CC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,10 +40,6 @@ Global
 		{F882A3EC-F2C5-4F06-99E0-14458491C0E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F882A3EC-F2C5-4F06-99E0-14458491C0E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F882A3EC-F2C5-4F06-99E0-14458491C0E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E22D3039-1233-48E6-9C96-6D442CE5809B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E22D3039-1233-48E6-9C96-6D442CE5809B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E22D3039-1233-48E6-9C96-6D442CE5809B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E22D3039-1233-48E6-9C96-6D442CE5809B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -80,6 +76,10 @@ Global
 		{D989FBD4-0F7E-4422-AFFA-9B7C6E902A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D989FBD4-0F7E-4422-AFFA-9B7C6E902A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D989FBD4-0F7E-4422-AFFA-9B7C6E902A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26E1B285-702A-45D1-B716-0D5DAF136CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E1B285-702A-45D1-B716-0D5DAF136CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E1B285-702A-45D1-B716-0D5DAF136CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E1B285-702A-45D1-B716-0D5DAF136CC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

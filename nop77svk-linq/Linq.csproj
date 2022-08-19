@@ -51,14 +51,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\nop77svk-misc\nop77svk-misc.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Include="..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Commons\Commons.csproj" />
 	</ItemGroup>
 
 </Project>
