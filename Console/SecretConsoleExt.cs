@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public static class SystemConsoleExt
+    public static class SecretConsoleExt
     {
         public static string ReadLineInSecret(Func<char, char?> remapTheChar, bool cancelOnEscape = false)
         {
