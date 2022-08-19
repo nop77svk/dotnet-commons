@@ -1,10 +1,6 @@
 ﻿namespace NoP77svk.Text
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
-    public static class StringExt
+    public static class StringWhitespaceSearchesExt
     {
         public static int IndexOfWhiteSpace(this string self, int startIndex)
         {
