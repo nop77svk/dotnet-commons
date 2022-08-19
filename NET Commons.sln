@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.WS", "nop77svk-http-ws-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk-misc\nop77svk-misc.csproj", "{E22D3039-1233-48E6-9C96-6D442CE5809B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectionStringParsers.Tests", "nop77svk-connection-string-parsers.tests\ConnectionStringParsers.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers.Tests", "nop77svk-connection-string-parsers.tests\Text.ConnectionStringParsers.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers", "nop77svk-connection-string-parsers\Text.ConnectionStringParsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
 EndProject
