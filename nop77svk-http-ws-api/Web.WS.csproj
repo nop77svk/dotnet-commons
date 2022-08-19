@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <RootNamespace>NoP77svk.Web.WS</RootNamespace>
-    <Version>2.0.0</Version>
-    <Company>Freelance</Company>
-    <Authors>Peter Hraško</Authors>
-    <Product>Pierre's .NET Commons</Product>
-    <Copyright>Copyleft</Copyright>
-	<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageId>NoP77svk.WebServiceClient</PackageId>
-    <Description>WebService API client abstractions layer</Description>
-    <NoWarn>1701;1702;AD0001;NETSDK1182</NoWarn>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<RootNamespace>NoP77svk.Web.WS</RootNamespace>
+		<Version>2.0.0</Version>
+		<Company>Freelance</Company>
+		<Authors>Peter Hraško</Authors>
+		<Product>Pierre's .NET Commons</Product>
+		<Copyright>Copyleft</Copyright>
+		<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageId>NoP77svk.WebServiceClient</PackageId>
+		<Description>WebService API client abstractions layer</Description>
+		<NoWarn>1701;1702;AD0001;NETSDK1182</NoWarn>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <ErrorReport>none</ErrorReport>
-	  <DebugType>none</DebugType>
-	  <DebugSymbols>false</DebugSymbols>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<ErrorReport>none</ErrorReport>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	<DebugType>portable</DebugType>
-	<DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Include="..\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
@@ -44,11 +44,11 @@
 		</PackageReference>
 	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>

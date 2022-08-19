@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>NoP77svk.Linq.Ext.Tests</RootNamespace>
-    <Nullable>enable</Nullable>
-	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
-	  <NoWarn>NETSDK1182</NoWarn>
-	  <IsPackable>false</IsPackable>
-	<IsPublishable>False</IsPublishable>
-	<OutputType>Library</OutputType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>NoP77svk.Linq.Ext.Tests</RootNamespace>
+		<Nullable>enable</Nullable>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<NoWarn>NETSDK1182</NoWarn>
+		<IsPackable>false</IsPackable>
+		<IsPublishable>False</IsPublishable>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Include="..\GlobalSuppressions.cs" Link="extras\GlobalSuppressions.cs" />
@@ -44,7 +44,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\nop77svk-linq\Linq.csproj" />
+		<ProjectReference Include="..\nop77svk-linq\Linq.csproj" />
 	</ItemGroup>
 
 </Project>
