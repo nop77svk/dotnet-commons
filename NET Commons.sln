@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nop77svk-misc", "nop77svk-m
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectionStringParsers.Tests", "nop77svk-connection-string-parsers.tests\ConnectionStringParsers.Tests.csproj", "{6F6ED149-C327-4B43-AFF6-6EDBA8464A0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectionStringParsers", "nop77svk-connection-string-parsers\ConnectionStringParsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text.ConnectionStringParsers", "nop77svk-connection-string-parsers\Text.ConnectionStringParsers.csproj", "{8987092F-10DA-4918-867A-69F85DFE4822}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "nop77svk-linq\Linq.csproj", "{1D53715A-7B12-4716-8C1C-EC11A4ABBC81}"
 EndProject
