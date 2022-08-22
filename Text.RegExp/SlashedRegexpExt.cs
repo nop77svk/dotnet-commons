@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Text.RegExp
+﻿namespace NoP77svk.Text
 {
     using System;
     using System.Text.RegularExpressions;

@@ -12,7 +12,7 @@
 		<Company>Open source community</Company>
 		<Copyright>Practically copyleft</Copyright>
 		<NoWarn>1701;1702;AD0001;NETSDK1182</NoWarn>
-		<RootNamespace>NoP77svk.Text.RegExp</RootNamespace>
+		<RootNamespace>NoP77svk.Text</RootNamespace>
 		<AssemblyName>NoP77svk.Text.RegExp</AssemblyName>
 		<PackageId>NoP77svk.Text.RegExp</PackageId>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>

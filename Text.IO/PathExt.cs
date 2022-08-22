@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Text.IO
+﻿namespace NoP77svk.Text
 {
     using System;
     using System.IO;

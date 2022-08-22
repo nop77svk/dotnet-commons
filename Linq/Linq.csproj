@@ -20,7 +20,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<RootNamespace>NoP77svk.Linq</RootNamespace>
 		<AssemblyName>NoP77svk.Linq</AssemblyName>
-		<PackageId>NoP77svk.Console</PackageId>
+		<PackageId>NoP77svk.Linq</PackageId>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
 

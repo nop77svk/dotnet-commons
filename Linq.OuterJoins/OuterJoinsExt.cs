@@ -1,4 +1,4 @@
-﻿namespace NoP77svk.Linq.Joins
+﻿namespace NoP77svk.Linq
 {
     using System;
     using System.Collections.Generic;

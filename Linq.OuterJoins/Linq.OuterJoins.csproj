@@ -11,7 +11,7 @@
 		<RepositoryUrl>https://github.com/nop77svk/dotnet-commons</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<NoWarn>1701;1702;AD0001;NETSDK1182</NoWarn>
-		<RootNamespace>NoP77svk.Linq.OuterJoins</RootNamespace>
+		<RootNamespace>NoP77svk.Linq</RootNamespace>
 		<AssemblyName>NoP77svk.Linq.OuterJoins</AssemblyName>
 		<PackageId>NoP77svk.Linq.OuterJoins</PackageId>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
