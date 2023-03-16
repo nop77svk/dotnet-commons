@@ -58,6 +58,8 @@
                 errorText.AppendLine("*** Request content:");
                 errorText.AppendLine(req.Content.ReadAsStringAsync().Result);
             }
+
+            errorText.AppendLine("*** (end of request headers)");
         }
 
         public static void AggregateResponseAsString(HttpResponseMessage response, StringBuilder errorText)
@@ -78,6 +80,8 @@
                 errorText.AppendLine("*** Response content:");
                 errorText.AppendLine(response.Content.ReadAsStringAsync().Result);
             }
+
+            errorText.AppendLine("*** (end of response headers)");
         }
 
         public static AuthenticationHeaderValue GetHeaderForBasicAuthentication(string? userName, string? userPassword)
