@@ -15,10 +15,13 @@
             Func<TOuterRow, TInnerRow, TResult> resultSelector)
             where TKey : IEquatable<TKey>
         {
-            return from left in outerTable
-                    join right in innerTable on outerKeySelector(left) equals innerKeySelector(right) into temp
-                    from right in temp.DefaultIfEmpty()
-                    select resultSelector(left, right);
+            return
+                from left in outerTable
+                join right in innerTable
+                    on outerKeySelector(left) equals innerKeySelector(right)
+                    into temp
+                from right in temp.DefaultIfEmpty()
+                select resultSelector(left, right);
         }
 
         public static IEnumerable<TResult> RightOuterJoin<TInnerRow, TOuterRow, TKey, TResult>(
@@ -29,10 +32,13 @@
             Func<TInnerRow, TOuterRow, TResult> resultSelector)
             where TKey : IEquatable<TKey>
         {
-            return from right in outerTable
-                    join left in innerTable on outerKeySelector(right) equals innerKeySelector(left) into temp
-                    from left in temp.DefaultIfEmpty()
-                    select resultSelector(left, right);
+            return
+                from right in outerTable
+                join left in innerTable
+                    on outerKeySelector(right) equals innerKeySelector(left)
+                    into temp
+                from left in temp.DefaultIfEmpty()
+                select resultSelector(left, right);
         }
 
         public static IEnumerable<TResult> FullOuterJoinDistinct<TOuterRow, TInnerRow, TKey, TResult>(
@@ -49,6 +55,19 @@
                     .RightOuterJoin(innerTable, outerKeySelector, innerKeySelector, resultSelector));
         }
 
+        public static IEnumerable<TOuterRow> SemiJoin<TOuterRow, TSemiRow, TKey>(
+            this IEnumerable<TOuterRow> outerTable,
+            IEnumerable<TSemiRow> semiJoinedTable,
+            Func<TOuterRow, TKey> outerKeySelector,
+            Func<TSemiRow, TKey> semiJoinKeySelector)
+            where TKey : IEquatable<TKey>
+        {
+            // var hashLK = new HashSet<TKey>(from l in semiJoinedTable select semiJoinKeySelector(l));
+            var hashLK = new HashSet<TKey>(semiJoinedTable.Select(l => semiJoinKeySelector(l)));
+            return outerTable
+                .Where(r => hashLK.Contains(outerKeySelector(r)));
+        }
+
         public static IEnumerable<TOuterRow> AntiJoin<TOuterRow, TAntiRow, TKey>(
             this IEnumerable<TOuterRow> outerTable,
             IEnumerable<TAntiRow> antiJoinedTable,
@@ -56,7 +75,8 @@
             Func<TAntiRow, TKey> antiJoinKeySelector)
             where TKey : IEquatable<TKey>
         {
-            var hashLK = new HashSet<TKey>(from l in antiJoinedTable select antiJoinKeySelector(l));
+            // var hashLK = new HashSet<TKey>(from l in antiJoinedTable select antiJoinKeySelector(l));
+            var hashLK = new HashSet<TKey>(antiJoinedTable.Select(l => antiJoinKeySelector(l)));
             return outerTable
                 .Where(r => !hashLK.Contains(outerKeySelector(r)));
         }
