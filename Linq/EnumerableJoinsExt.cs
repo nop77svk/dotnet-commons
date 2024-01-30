@@ -49,19 +49,5 @@
                 }
             }
         }
-
-        public static IEnumerable<TResult> Unnest<TElement, TSubElement, TResult>(
-            this IEnumerable<TElement> self,
-            Func<TElement, IEnumerable<TSubElement>> retrieveNestedCollection,
-            Func<TElement, TSubElement, TResult> resultSelector
-        )
-        {
-            foreach (TElement element in self)
-            {
-                IEnumerable<TSubElement> nestedCollection = retrieveNestedCollection(element);
-                foreach (TSubElement subElement in nestedCollection)
-                    yield return resultSelector(element, subElement);
-            }
-        }
     }
 }
